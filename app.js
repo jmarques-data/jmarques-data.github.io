@@ -26,9 +26,5 @@
   modal.addEventListener('click', e => { if (e.target === modal) closeVideo(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeVideo(); });
 
-  // Aviso de cookies (lembra só neste navegador)
-  const KEY = 'jm-cookie-ok', bar = document.getElementById('cookie');
-  let seen = false; try { seen = localStorage.getItem(KEY) === '1'; } catch (e) { }
-  if (!seen) bar.hidden = false;
-  document.getElementById('cookieOk').addEventListener('click', () => { bar.hidden = true; try { localStorage.setItem(KEY, '1'); } catch (e) { } });
+  // Sem aviso de cookies: o site não usa cookies, armazenamento no navegador nem serviços de terceiros.
 })();
