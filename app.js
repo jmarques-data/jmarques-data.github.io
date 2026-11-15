@@ -1,12 +1,15 @@
 // Hub do Juan · comportamento da página
 (() => {
-  // Links da Kiwify: troque KIWIFY_GRUPO e KIWIFY_INDIVIDUAL no index.html pelos links reais.
+  // Links da Kiwify: troque KIWIFY_GRUPO e KIWIFY_INDIVIDUAL no index.html pelos links reais (https://).
+  // Enquanto não houver link real, o botão fica desativado e o selo do topo não diz que a mentoria está aberta.
+  let abertos = 0;
   document.querySelectorAll('a[data-kiwify]').forEach(a => {
-    if (!/^https?:\/\//.test(a.getAttribute('href') || '')) {
-      a.removeAttribute('href'); a.removeAttribute('target');
-      a.classList.add('disabled'); a.textContent = 'Inscrições abrem em breve';
-    }
+    if (/^https:\/\//.test(a.getAttribute('href') || '')) { abertos++; return; }
+    a.removeAttribute('href'); a.removeAttribute('target'); a.removeAttribute('rel');
+    a.classList.add('disabled'); a.textContent = 'Inscrições abrem em breve';
   });
+  const status = document.getElementById('status');
+  if (status && abertos) status.lastChild.textContent = 'Inscrições abertas';
 
   // Vídeo "a mentoria por dentro": 16:9 no computador e 9:16 no celular
   const modal = document.getElementById('videoModal'), box = modal.querySelector('.modal-box'), video = document.getElementById('mvideo');

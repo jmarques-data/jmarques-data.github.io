@@ -74,6 +74,7 @@
 .guarantee svg{flex:none;width:34px;height:34px;stroke:var(--lime);fill:none;stroke-width:1.8}
 .guarantee p{margin:0;color:var(--onBlue);font-size:15px}
 .guarantee b{color:var(--white)}
+.guarantee a{color:var(--lime);text-decoration:underline}
 
 /* 7. para quem é */
 .mt-fit{padding:96px 0;background:var(--white)}
