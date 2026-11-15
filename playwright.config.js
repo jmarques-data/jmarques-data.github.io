@@ -8,7 +8,7 @@ module.exports = defineConfig({
   reporter: [['list']],
   use: { baseURL: 'http://127.0.0.1:4173', channel: canal },
   webServer: {
-    command: 'python -m http.server 4173 --bind 127.0.0.1',
+    command: 'python tools/servidor.py 4173',
     url: 'http://127.0.0.1:4173/index.html',
     reuseExistingServer: !process.env.CI,
   },

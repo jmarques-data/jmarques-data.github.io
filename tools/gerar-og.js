@@ -1,5 +1,5 @@
 // Gera img/og.jpg (1200×630) a partir de tools/og.html, com o Chrome do Playwright.
-// Uso: npm run og   (precisa do servidor de testes: python -m http.server 4173 --bind 127.0.0.1)
+// Uso: npm run og   (precisa do servidor: npm run serve)
 const { chromium } = require('@playwright/test');
 
 (async () => {

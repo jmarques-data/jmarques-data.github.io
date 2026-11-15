@@ -3,7 +3,7 @@
   "private": true,
   "description": "Página de venda e link da bio do Juan Marques (site estático).",
   "scripts": {
-    "serve": "python -m http.server 4173",
+    "serve": "python tools/servidor.py 4173",
     "lint:html": "html-validate index.html politica-de-privacidade.html termos-de-uso.html",
     "test": "playwright test",
     "check": "npm run lint:html && npm test",
