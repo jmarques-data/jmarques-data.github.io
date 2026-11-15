@@ -54,7 +54,7 @@ h2{font:400 clamp(42px,6.4vw,84px)/.94 var(--display);text-transform:uppercase;l
   font:400 var(--gs)/.8 var(--display);color:var(--lime);text-transform:uppercase;letter-spacing:-.005em}
 .visual{grid-area:visual;position:relative;z-index:1;align-self:stretch;display:flex;align-items:flex-end;justify-content:center;margin-top:calc(var(--gs) * -0.5);min-height:0}
 .figure{position:relative;height:calc(100% + 28px);width:100%;display:flex;align-items:flex-start;justify-content:center;margin-bottom:-28px}
-.me{position:relative;z-index:1;display:block;height:100%;width:auto;max-width:100%;max-height:min(84vh,720px);object-fit:contain;object-position:50% 100%;
+.me{position:relative;z-index:1;display:block;height:100%;width:auto;max-width:100%;max-height:min(80vh,700px);object-fit:contain;object-position:50% 100%;
   filter:drop-shadow(0 20px 34px rgba(0,10,60,.35))}
 
 .left{grid-area:left;position:relative;z-index:2;padding-bottom:6px}
