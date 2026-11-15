@@ -12,9 +12,10 @@
 - Ícones SVG e cursores animados decorativos com `aria-hidden`. Links só com ícone têm `aria-label`.
 - Palavra gigante "TECNOLOGIA" é decorativa (`aria-hidden`); a foto tem `alt` descritivo.
 - Vídeo em modal: `role="dialog"`, `aria-modal`, foco vai para "fechar", fica preso no modal, Esc fecha e o foco volta ao botão de origem.
-- `prefers-reduced-motion: reduce` desliga animações e transições.
+- `prefers-reduced-motion: reduce` desliga animações e transições, inclusive as entradas ao rolar e a contagem dos números (testado).
+- Vídeo da mentoria com legenda em português (`video/mentoria.pt-BR.vtt`, ativa por padrão). O vídeo não tem narração; a legenda descreve a trilha e todos os textos da tela (WCAG 1.2.2; testado).
+- As animações de entrada não escondem conteúdo sem JavaScript e terminam visíveis (testado).
 - Sem rolagem horizontal no celular nem no computador (testado).
 
 ## Pendente
-- Legenda (`.vtt`) do vídeo "a mentoria por dentro" (WCAG 1.2.2). Precisa do texto da narração.
 - Teste manual com leitor de tela e com zoom de 200% e 400%.
