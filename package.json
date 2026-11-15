@@ -6,7 +6,8 @@
     "serve": "python -m http.server 4173",
     "lint:html": "html-validate index.html politica-de-privacidade.html termos-de-uso.html",
     "test": "playwright test",
-    "check": "npm run lint:html && npm test"
+    "check": "npm run lint:html && npm test",
+    "og": "node tools/gerar-og.js"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.14.0",

@@ -1,0 +1,16 @@
+/* Estilo só da imagem de compartilhamento (1200×630). Mesma identidade do site. */
+*{box-sizing:border-box;margin:0}
+body{width:1200px;height:630px;overflow:hidden;background:#0131cd}
+.og{position:relative;width:1200px;height:630px;overflow:hidden;color:#fff;
+  background:radial-gradient(60% 80% at 60% 45%,#0a3ce0 0%,#0131cd 45%,#00229a 100%)}
+.og::before{content:"";position:absolute;inset:0;opacity:.35;
+  background-image:linear-gradient(rgba(255,255,255,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.18) 1px,transparent 1px);background-size:56px 56px}
+.tag{position:absolute;left:56px;top:46px;font:600 18px/1 "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#b9fc01}
+.giant{position:absolute;right:-6px;top:58px;font:400 210px/.8 Anton,sans-serif;color:#b9fc01;text-transform:uppercase;white-space:nowrap}
+.me{position:absolute;right:120px;bottom:-40px;height:560px;filter:drop-shadow(0 20px 34px rgba(0,10,60,.35))}
+.txt{position:absolute;left:56px;bottom:120px}
+.hi{display:inline-block;font:700 46px/1 Caveat,cursive;transform:rotate(-4deg)}
+.name{font:400 150px/.86 Anton,sans-serif;text-transform:uppercase}
+.name b{color:#b9fc01;font-weight:400}
+.role{margin-top:14px;font:400 30px/1 Anton,sans-serif;color:#b9fc01;text-transform:uppercase;letter-spacing:.02em}
+.cta{position:absolute;left:56px;bottom:46px;background:#b9fc01;color:#0131cd;font:700 22px/1 Inter,sans-serif;padding:14px 20px;border-radius:4px}
