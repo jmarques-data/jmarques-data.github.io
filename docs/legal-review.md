@@ -5,9 +5,9 @@ Os textos da política e dos termos foram escritos com base no que o site e as d
 ## Obrigatórios antes de vender
 1. **Identificação do vendedor.** O Decreto nº 7.962/2013 (comércio eletrônico) exige nome ou razão social, CPF ou CNPJ e endereço em local de destaque. **Decisão do Juan (14/11/2026):** o site mostra só o nome (Juan Marques Rodrigues, na política, nos termos e no rodapé); CPF/CNPJ e endereço ficam apenas no cadastro e no checkout da Kiwify. **Falta confirmar com um contador ou advogado** se exibir esses dados só no checkout atende ao decreto. Alternativa sem expor o CPF: abrir um MEI e mostrar o CNPJ.
 2. **Links reais de checkout** da Kiwify (WI-14).
-3. **Duração do acesso** ao grupo e aos materiais (vitalício? 6 meses? enquanto o grupo existir?) e **início dos 30 dias** do suporte individual. Hoje o site não diz. Prazos ocultos são um risco pelo CDC.
-4. **Plataforma do grupo** (WhatsApp, Telegram ou Discord): afeta a política de privacidade.
-5. **Idade mínima** para comprar. Menores de 18 exigem cuidado extra (LGPD art. 14 e ECA Digital).
+3. **Duração do acesso.** **Decisão do Juan (15/11/2026):** 30 dias corridos contados da entrada no grupo, para os dois planos; o suporte individual conta da mesma data. Os arquivos baixados do kit ficam com o aluno para uso pessoal (regra proposta, confirmar com o Juan). Publicado nos termos, na política e no FAQ.
+4. **Plataforma do grupo.** **Decisão do Juan (15/11/2026):** WhatsApp. A política avisa que os participantes veem o número e o nome de perfil uns dos outros.
+5. **Idade mínima.** **Decisão do Juan (15/11/2026):** 16 anos; 16 e 17 só com autorização do responsável (capacidade civil relativa, art. 4º do Código Civil). **Validar com advogado** como coletar e guardar essa autorização (LGPD art. 14 e ECA Digital).
 
 ## Validar com advogado ou contador
 - Bases legais listadas em `privacy.md` e na política.
