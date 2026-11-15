@@ -151,3 +151,17 @@ test('os dois botões de compra desativados têm a mesma aparência', async ({ p
   const cores = await page.$$eval('[data-kiwify]', as => as.map(a => getComputedStyle(a).backgroundColor));
   expect(new Set(cores).size).toBe(1);
 });
+
+test('o vídeo da mentoria tem legenda em português que carrega (WCAG 1.2.2)', async ({ page }) => {
+  await page.goto('/index.html');
+  await page.click('#openVideo');
+  const info = await page.evaluate(async () => {
+    const v = document.getElementById('mvideo'), t = v.querySelector('track[kind="captions"]');
+    if (!t) return { trilha: false };
+    t.track.mode = 'hidden';
+    for (let i = 0; i < 40 && t.readyState !== 2 && t.readyState !== 3; i++) await new Promise(r => setTimeout(r, 100));
+    return { trilha: true, idioma: t.srclang, estado: t.readyState, cues: t.track.cues ? t.track.cues.length : 0 };
+  });
+  expect(info).toMatchObject({ trilha: true, idioma: 'pt-BR', estado: 2 });
+  expect(info.cues).toBeGreaterThan(3);
+});
