@@ -7,6 +7,8 @@ Status: **Concluído** (feito e testado) · **Parcial** · **Pendente** · **Blo
 Linha de base (14/11/2026, antes das mudanças): `html-validate` com 18 erros; Playwright com 18 falhas, 33 aprovados e 3 pulados.
 Depois (14/11/2026): `html-validate` sem erros; Playwright com 53 aprovados, 0 falhas e 3 pulados (testes só de teclado no perfil celular); `npm audit` sem vulnerabilidades.
 
+Segunda rodada (14/11/2026, noite): `html-validate` sem erros; Playwright com 60 aprovados, 0 falhas e 3 pulados (rodado 2 vezes seguidas, estável).
+
 | ID | Item | Severidade | Status | Branch |
 |---|---|---|---|---|
 | WI-00 | Git local, validação de HTML, testes de acessibilidade e comportamento, workflow de CI | Média | Concluído (CI só roda quando houver repositório) | `chore/qualidade` |
@@ -22,7 +24,12 @@ Depois (14/11/2026): `html-validate` sem erros; Playwright com 53 aprovados, 0 f
 | WI-10 | Sem atalho para o conteúdo e sem `<main>` | Média (WCAG 2.4.1) | Concluído | `fix/acessibilidade` |
 | WI-11 | Comparativo em `<div role=table>`; nomes dos planos sem título. Tabela nativa e `<h3>` | Baixa | Concluído | `fix/acessibilidade` |
 | WI-12 | Vídeo em modal sem foco preso; botão desativado do plano em grupo parecia clicável | Média | Concluído | `fix/acessibilidade` |
-| WI-13 | Vídeo "a mentoria por dentro" sem legenda | Média (WCAG 1.2.2) | Pendente: precisa do texto da narração para gerar a legenda `.vtt` | — |
+| WI-13 | Vídeo "a mentoria por dentro" sem legenda. O vídeo não tem narração: a legenda `video/mentoria.pt-BR.vtt` descreve a trilha e todos os textos da tela | Média (WCAG 1.2.2) | Concluído | `fix/legenda-video` |
 | WI-14 | Links reais do checkout da Kiwify | — | Bloqueado: Juan precisa criar a conta e os produtos | — |
 | WI-15 | Criar repositório, ativar o CI e publicar no GitHub Pages; conferir o endereço usado em `canonical` e `og:url` | — | Bloqueado: precisa de autorização para publicar | — |
-| WI-16 | Imagem de compartilhamento própria (1200×630) no lugar da foto recortada | Baixa | Pendente | — |
+| WI-16 | Imagem de compartilhamento própria (1200×630) no lugar da foto recortada: `img/og.jpg`, gerada de `tools/og.html` com `npm run og` | Baixa | Concluído | `feat/imagem-compartilhamento` |
+| WI-17 | CSP diferente entre as páginas (a outra sessão tirou `upgrade-insecure-requests` de 2 páginas e da doc). Igualada nas 3 | Baixa | Concluído | `chore/csp-consistente` |
+| WI-18 | Movimento e microinterações: entrada do topo, seções ao rolar, contagem dos números, hover e toque. Só `transform`/`opacity`, desligado com `prefers-reduced-motion` | Média (experiência) | Concluído | `feat/motion-microinteracoes` |
+| WI-19 | Avaliar Spell UI, Inspora, Refero Styles e Motion Principles (`docs/design-motion.md`) | Baixa | Concluído (nenhuma instalada; ver motivos) | `docs/design-e-pendencias` |
+| WI-20 | `AGENTS.md` citava `docs/third-party-services.md`, que não existe (o conteúdo está em `docs/privacy.md`). Corrigido; licenças da foto e do vídeo atualizadas | Baixa | Concluído | `docs/design-e-pendencias` |
+| WI-21 | Identificação do vendedor: nome **Juan Marques Rodrigues** na política, nos termos e no rodapé. CPF/CNPJ e endereço ficam só na Kiwify (decisão do Juan) | Alta (consumidor) | Parcial: confirmar com contador se atende ao Decreto 7.962/2013 | `fix/identificacao-vendedor` |

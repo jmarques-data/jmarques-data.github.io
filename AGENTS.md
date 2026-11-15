@@ -21,7 +21,7 @@ No Windows os testes usam o Chrome instalado. No CI (`CI=true`) usam o Chromium 
 ## Regras do projeto
 - Português do Brasil, linguagem simples, sem jargão.
 - Identidade visual: azul `#0131CD`, branco, limão `#B9FC01`; títulos Anton, texto Inter, rótulos JetBrains Mono. Nunca texto limão sobre fundo branco.
-- **Nada de terceiros carregando no navegador** (fontes, scripts, analytics, pixels). A CSP em `<meta>` bloqueia; o teste "só carrega recursos do próprio site" falha se algo entrar. Adicionar um terceiro exige atualizar a política de privacidade, `docs/third-party-services.md` e, se houver cookie não essencial, um banner de consentimento com aceitar, rejeitar e configurar.
+- **Nada de terceiros carregando no navegador** (fontes, scripts, analytics, pixels). A CSP em `<meta>` bloqueia; o teste "só carrega recursos do próprio site" falha se algo entrar. Adicionar um terceiro exige atualizar a política de privacidade, a seção "Serviços de terceiros" de `docs/privacy.md` e, se houver cookie não essencial, um banner de consentimento com aceitar, rejeitar e configurar.
 - **Sem estilos ou scripts inline** (a CSP bloqueia). Use `estilo.css`, `mentoria.css`, `doc.css` e `app.js`.
 - **Integridade comercial:** sem contadores falsos, escassez artificial, depoimentos ou números inventados. Preço, forma de pagamento, desistência de 7 dias e link dos termos ficam visíveis nos planos (há teste).
 - **Checkout:** os botões usam `data-kiwify` com `href` provisório (`KIWIFY_GRUPO`, `KIWIFY_INDIVIDUAL`). Enquanto não houver link `https://` real, `app.js` desativa o botão e o selo do topo mostra "Inscrições em breve".
