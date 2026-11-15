@@ -3,7 +3,7 @@
 Os textos da política e dos termos foram escritos com base no que o site e as decisões registradas mostram. **Não são parecer jurídico.** Nada aqui declara conformidade legal completa.
 
 ## Obrigatórios antes de vender
-1. **Identificação do vendedor.** O Decreto nº 7.962/2013 (comércio eletrônico) exige nome ou razão social, CPF ou CNPJ e endereço em local de destaque. Falta preencher na política, nos termos e no rodapé (há comentários `PENDENTE` no HTML). Decidir se vende como pessoa física ou com CNPJ (MEI, por exemplo).
+1. **Identificação do vendedor.** O Decreto nº 7.962/2013 (comércio eletrônico) exige nome ou razão social, CPF ou CNPJ e endereço em local de destaque. **Decisão do Juan (14/11/2026):** o site mostra só o nome (Juan Marques Rodrigues, na política, nos termos e no rodapé); CPF/CNPJ e endereço ficam apenas no cadastro e no checkout da Kiwify. **Falta confirmar com um contador ou advogado** se exibir esses dados só no checkout atende ao decreto. Alternativa sem expor o CPF: abrir um MEI e mostrar o CNPJ.
 2. **Links reais de checkout** da Kiwify (WI-14).
 3. **Duração do acesso** ao grupo e aos materiais (vitalício? 6 meses? enquanto o grupo existir?) e **início dos 30 dias** do suporte individual. Hoje o site não diz. Prazos ocultos são um risco pelo CDC.
 4. **Plataforma do grupo** (WhatsApp, Telegram ou Discord): afeta a política de privacidade.
