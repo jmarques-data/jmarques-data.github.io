@@ -1,0 +1,52 @@
+/* Hub do Juan · movimento e microinterações
+   Regras (docs/design-motion.md):
+   - só transform e opacity (sem mudar layout, sem layout shift);
+   - durações curtas e uma curva de saída única;
+   - tudo desligado com prefers-reduced-motion (regra no fim deste arquivo);
+   - o conteúdo nunca depende da animação: sem JavaScript, tudo aparece normalmente. */
+:root{
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --dur-fast:160ms; --dur-base:260ms; --dur-reveal:700ms;
+}
+
+/* ---------- entrada do topo (só no carregamento) ---------- */
+.giant{animation:jm-rise var(--dur-reveal) var(--ease-out) both}
+.visual .me{animation:jm-rise var(--dur-reveal) var(--ease-out) 120ms both}
+.left .hi,.left .name,.left .role{animation:jm-rise var(--dur-reveal) var(--ease-out) both}
+.left .name{animation-delay:80ms}
+.left .role{animation-delay:160ms}
+@keyframes jm-rise{from{opacity:0;transform:translate3d(0,24px,0)}to{opacity:1;transform:none}}
+
+/* ---------- seções que entram ao rolar (classes postas pelo app.js) ---------- */
+.rv{opacity:0;transform:translate3d(0,22px,0);transition:opacity var(--dur-reveal) var(--ease-out),transform var(--dur-reveal) var(--ease-out);transition-delay:calc(var(--i,0) * 70ms)}
+.rv.rv-in{opacity:1;transform:none}
+
+/* ---------- microinterações ---------- */
+.btn,.btn-ghost,.cta,.talk,.wa{transition:transform var(--dur-fast) var(--ease-out),background var(--dur-base),color var(--dur-base),border-color var(--dur-base),box-shadow var(--dur-base)}
+.btn:hover,.cta:not(.disabled):hover,.talk:hover,.wa:hover{transform:translate3d(0,-2px,0);box-shadow:0 10px 24px -10px rgba(185,252,1,.75)}
+.btn-ghost:hover{transform:translate3d(0,-2px,0)}
+.btn:active,.btn-ghost:active,.cta:not(.disabled):active,.talk:active,.wa:active{transform:scale(.98)}
+
+a.row .go svg{transition:transform var(--dur-base) var(--ease-out)}
+a.row:hover .go svg{transform:translate3d(2px,-2px,0) rotate(0deg)}
+a.row h3{transition:transform var(--dur-base) var(--ease-out)}
+a.row:hover h3{transform:translate3d(4px,0,0)}
+
+.plan{transition:transform var(--dur-base) var(--ease-out),box-shadow var(--dur-base)}
+.plan:hover{transform:translate3d(0,-4px,0)}
+.plan.pro:hover{box-shadow:16px 16px 0 var(--lime)}
+
+.oc,.dl,.fit{transition:transform var(--dur-base) var(--ease-out),background var(--dur-base)}
+.fit:hover{transform:translate3d(0,-3px,0)}
+
+.faq details p{animation:jm-fade var(--dur-base) var(--ease-out)}
+@keyframes jm-fade{from{opacity:0;transform:translate3d(0,-4px,0)}to{opacity:1;transform:none}}
+
+/* número que conta (o app.js trava a largura para não pular) */
+.stat strong.counting{font-variant-numeric:tabular-nums}
+
+@media (prefers-reduced-motion:reduce){
+  .giant,.visual .me,.left .hi,.left .name,.left .role,.faq details p{animation:none!important}
+  .rv{opacity:1!important;transform:none!important;transition:none!important}
+  .btn,.btn-ghost,.cta,.talk,.wa,.plan,.oc,.dl,.fit,a.row h3,a.row .go svg{transition:none!important;transform:none!important}
+}

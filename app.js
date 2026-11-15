@@ -39,4 +39,46 @@
   });
 
   // Sem aviso de cookies: o site não usa cookies, armazenamento no navegador nem serviços de terceiros.
+
+  // Movimento: seções entram ao rolar e os números do topo contam até o valor.
+  // Desligado para quem pede menos movimento ou em navegadores sem IntersectionObserver.
+  const calmo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (calmo || !('IntersectionObserver' in window)) return;
+
+  const SELETORES = [
+    '#recursos .head', '#recursos .row',
+    '.mt-hero .mt-pains li', '.mt-compare h2', '.cmp',
+    '.dl-head', '.dl', '.mt-method h2', '.steps4 li', '.mt-why h2', '.why li',
+    '.pl-head', '.plan', '.guarantee', '.fit', '.mt-faq h2', '.faq details', '.mt-final h2',
+    '#sobre h2', '#sobre .bio', '.sk-group', '.wa'
+  ].join(',');
+  const alturaTela = window.innerHeight;
+  const io = new IntersectionObserver(entradas => {
+    entradas.forEach(e => { if (e.isIntersecting) { e.target.classList.add('rv-in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  document.querySelectorAll(SELETORES).forEach(el => {
+    // o que já está visível ao abrir não anima (evita piscar)
+    if (el.getBoundingClientRect().top < alturaTela * 0.92) return;
+    const irmaos = el.parentElement ? [...el.parentElement.children].filter(c => c.matches(SELETORES)) : [];
+    el.style.setProperty('--i', String(Math.min(Math.max(irmaos.indexOf(el), 0), 5)));
+    el.classList.add('rv');
+    io.observe(el);
+  });
+
+  // Contagem dos números do topo (04 e 24,99), com largura travada para não deslocar o layout
+  document.querySelectorAll('.stat strong').forEach(el => {
+    const final = el.textContent.trim(), m = final.match(/^(\d+)(?:,(\d+))?$/);
+    if (!m) return;
+    const casas = m[2] ? m[2].length : 0, alvo = parseFloat(final.replace(',', '.')), pad = m[1].length;
+    el.style.minWidth = el.getBoundingClientRect().width + 'px';
+    el.classList.add('counting');
+    const formata = v => { const [i, d] = v.toFixed(casas).split('.'); return i.padStart(pad, '0') + (d ? ',' + d : ''); };
+    const t0 = performance.now(), dur = 900;
+    const passo = agora => {
+      const p = Math.min(1, (agora - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = p < 1 ? formata(alvo * e) : final;
+      if (p < 1) requestAnimationFrame(passo);
+    };
+    requestAnimationFrame(passo);
+  });
 })();
