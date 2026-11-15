@@ -6,7 +6,7 @@ Site estático: sem servidor próprio, banco de dados, login, formulários, uplo
 ## Controles implementados
 | Controle | Onde | Verificação |
 |---|---|---|
-| Content-Security-Policy restritiva (`default-src 'self'`, sem inline, `object-src 'none'`, `form-action 'none'`, `upgrade-insecure-requests`) | `<meta>` nas 3 páginas | testes "não gera erros no console" e "só carrega recursos do próprio site" |
+| Content-Security-Policy restritiva (`default-src 'self'`, sem inline, `object-src 'none'`, `form-action 'none'`) | `<meta>` nas 3 páginas | testes "não gera erros no console" e "só carrega recursos do próprio site" |
 | Referrer-Policy `strict-origin-when-cross-origin` | `<meta>` | — |
 | Nenhum recurso de terceiros carregado no navegador | fontes locais em `fontes/` | teste automatizado |
 | Links externos com `rel="noopener"` | todos os `target="_blank"` | teste automatizado |
