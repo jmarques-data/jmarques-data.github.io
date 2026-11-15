@@ -190,6 +190,7 @@ footer a:hover{color:var(--lime)}
   .right{align-self:end}
 }
 @media (max-width:700px){
+  .left .where,.right .motto{display:none}  /* topo mais limpo no celular */
   .talk span,.talk{font-size:13px}
   .tr{display:none}
   .stage{--gs:19.5vw;grid-template-columns:minmax(0,1fr);grid-template-areas:"giant" "visual" "left" "right";gap:0;padding-top:78px}
