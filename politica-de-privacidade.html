@@ -1,57 +1,69 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Política de privacidade · Juan Marques</title>
+<meta name="description" content="Como o site e a mentoria de Juan Marques tratam dados pessoais, de acordo com a LGPD.">
 <meta name="theme-color" content="#0131cd">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="fontes/fontes.css">
 <link rel="stylesheet" href="estilo.css">
-<style>
-  .doc{max-width:760px;padding:56px 16px 80px;margin:0 auto}
-  .doc h1{font:400 clamp(44px,8vw,72px)/.95 var(--display);text-transform:uppercase;margin:14px 0 8px;color:var(--ink)}
-  .doc h2{font:700 20px/1.3 Inter,sans-serif;text-transform:none;margin:36px 0 8px;color:var(--blue)}
-  .doc p,.doc li{color:var(--body)}
-  .doc a{color:var(--blue);text-decoration:underline}
-  .back{display:inline-flex;margin-bottom:24px;font:600 14px Inter,sans-serif;color:var(--blue)}
-  .top-band{height:10px;background:var(--blue)}
-</style>
+<link rel="stylesheet" href="doc.css">
 </head>
 <body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
 <div class="top-band"></div>
-<main class="doc">
+<main class="doc" id="conteudo">
   <a class="back" href="index.html">← Voltar para o site</a>
   <span class="mono kicker">Atualizada em 14/11/2026</span>
   <h1>Política de privacidade</h1>
-  <p>Esta página explica, de forma simples, como este site trata informações de quem o visita, de acordo com a Lei Geral de Proteção de Dados (LGPD, Lei nº 13.709/2018).</p>
+  <p>Esta página explica, de forma simples, quais dados pessoais são tratados no site e na mentoria, para quê, com quem são compartilhados e como você exerce os seus direitos, de acordo com a Lei Geral de Proteção de Dados (LGPD, Lei nº 13.709/2018).</p>
 
   <h2>Quem é o responsável</h2>
-  <p>Juan Marques (@jmarques.tech). Contato: WhatsApp <a href="https://wa.me/5531996910253" target="_blank" rel="noopener">(31) 99691-0253</a>.</p>
+  <!-- PENDENTE (ver docs/legal-review.md): incluir CPF ou CNPJ e endereço do responsável antes de vender. -->
+  <p>Juan Marques (@jmarques.tech), responsável pelo site e pela mentoria. Canal para assuntos de privacidade: WhatsApp <a href="https://wa.me/5531996910253" target="_blank" rel="noopener">(31) 99691-0253</a>.</p>
 
-  <h2>O que este site coleta</h2>
-  <p>Este site não tem formulários, não cria contas e não usa ferramentas de análise, rastreamento ou anúncios. Ele não coleta diretamente nenhum dado pessoal seu.</p>
+  <h2>O que o site coleta</h2>
+  <p>Nada diretamente. O site não tem formulários, não cria contas, não usa cookies e não guarda nada no seu navegador. Também não usa ferramentas de análise, pixels de anúncio nem fontes ou scripts de terceiros: tudo é carregado do próprio site.</p>
 
-  <h2>Cookies e armazenamento</h2>
-  <p>Não usamos cookies de rastreamento. O site guarda apenas, no seu próprio navegador, a informação de que você já viu o aviso de cookies, para não mostrá-lo de novo. Você pode apagar isso a qualquer momento limpando os dados do navegador.</p>
+  <h2>Dados tratados por terceiros e na mentoria</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th scope="col">Quando</th><th scope="col">Quais dados</th><th scope="col">Para quê</th></tr></thead>
+      <tbody>
+        <tr><td>Você visita o site</td><td>Dados técnicos de acesso registrados pela hospedagem (GitHub Pages), como endereço IP</td><td>Segurança e funcionamento do servidor, sob responsabilidade do GitHub</td></tr>
+        <tr><td>Você compra a mentoria</td><td>Os dados pedidos no checkout da Kiwify (como nome, e-mail e dados de pagamento)</td><td>Processar o pagamento, emitir comprovantes e liberar o seu acesso</td></tr>
+        <tr><td>Você participa da mentoria</td><td>O que você compartilhar no grupo ou no privado (como nome e número de WhatsApp)</td><td>Prestar a mentoria: tirar dúvidas, dar suporte e revisar o seu projeto</td></tr>
+        <tr><td>Você me chama no WhatsApp</td><td>Seu número e as mensagens trocadas</td><td>Responder ao seu contato</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Os dados de cartão são tratados pela Kiwify. Eu recebo da plataforma apenas o necessário para identificar a compra e liberar o acesso.</p>
 
-  <h2>Serviços de terceiros</h2>
+  <h2>Com quem os dados são compartilhados</h2>
   <ul>
-    <li><strong>Hospedagem (GitHub Pages):</strong> o servidor pode registrar dados técnicos de acesso, como o endereço IP, para segurança e funcionamento.</li>
-    <li><strong>Google Fonts:</strong> as fontes do site são carregadas dos servidores do Google, que recebem o seu endereço IP para entregar os arquivos.</li>
-    <li><strong>Kiwify:</strong> o pagamento da mentoria é feito no site da Kiwify, que trata os seus dados de compra conforme a política de privacidade dela. Eu recebo apenas as informações necessárias para liberar o seu acesso.</li>
-    <li><strong>WhatsApp, Instagram, TikTok, LinkedIn e GitHub:</strong> ao clicar nesses links, você vai para o serviço correspondente, que tem as próprias regras de privacidade.</li>
+    <li><strong>GitHub (hospedagem do site):</strong> empresa dos Estados Unidos. Os dados técnicos de acesso podem ser tratados fora do Brasil.</li>
+    <li><strong>Kiwify (pagamento):</strong> trata os dados da compra conforme a política de privacidade dela.</li>
+    <li><strong>Aplicativo do grupo da mentoria e WhatsApp:</strong> esses serviços têm regras de privacidade próprias e podem tratar dados fora do Brasil.</li>
   </ul>
+  <p>Os seus dados não são vendidos nem repassados para outras finalidades.</p>
 
-  <h2>Mentoria</h2>
-  <p>Se você entrar na mentoria, os dados que você compartilhar no grupo ou no privado (como nome e número de WhatsApp) são usados apenas para a mentoria e não são vendidos nem repassados a terceiros.</p>
+  <h2>Por quanto tempo</h2>
+  <p>Os dados da mentoria são mantidos enquanto ela durar e, depois, apenas pelo tempo exigido por obrigações legais, como registros de venda. Você pode pedir a exclusão antes disso, salvo o que a lei obriga a guardar.</p>
 
   <h2>Seus direitos</h2>
-  <p>Você pode pedir, a qualquer momento, para saber quais dados seus eu tenho, corrigi-los ou apagá-los. É só falar comigo pelo WhatsApp acima.</p>
+  <p>Você pode pedir, a qualquer momento e sem custo: confirmação de que trato dados seus, acesso, correção, cópia, exclusão, informação sobre com quem compartilho e revisão de consentimentos. Para isso, fale comigo pelo WhatsApp acima. Para confirmar que o pedido é seu, posso pedir uma informação da compra. Você também pode reclamar na Autoridade Nacional de Proteção de Dados (ANPD).</p>
+
+  <h2>Segurança</h2>
+  <p>O site é estático, não guarda dados e bloqueia o carregamento de conteúdo de outros endereços. Se acontecer um incidente de segurança que possa trazer risco a você, você será avisado e a ANPD será comunicada, como manda a LGPD.</p>
 
   <h2>Mudanças</h2>
   <p>Esta política pode ser atualizada. A data no topo mostra a versão mais recente.</p>
+
+  <div class="doc-foot"><a href="termos-de-uso.html">Termos de uso e reembolso</a><a href="index.html">Voltar para o site</a></div>
 </main>
 </body>
 </html>
