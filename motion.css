@@ -23,6 +23,7 @@
 
 /* ---------- microinterações ---------- */
 .btn,.btn-ghost,.cta,.talk,.wa{transition:transform var(--dur-fast) var(--ease-out),background var(--dur-base),color var(--dur-base),border-color var(--dur-base),box-shadow var(--dur-base)}
+.cta.disabled{transition:none}  /* desativado já nasce com a cor final (sem animar ao carregar) */
 .btn:hover,.cta:not(.disabled):hover,.talk:hover,.wa:hover{transform:translate3d(0,-2px,0);box-shadow:0 10px 24px -10px rgba(185,252,1,.75)}
 .btn-ghost:hover{transform:translate3d(0,-2px,0)}
 .btn:active,.btn-ghost:active,.cta:not(.disabled):active,.talk:active,.wa:active{transform:scale(.98)}
