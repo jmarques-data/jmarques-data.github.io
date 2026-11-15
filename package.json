@@ -4,7 +4,7 @@
   "description": "Página de venda e link da bio do Juan Marques (site estático).",
   "scripts": {
     "serve": "python tools/servidor.py 4173",
-    "lint:html": "html-validate index.html politica-de-privacidade.html termos-de-uso.html",
+    "lint:html": "html-validate index.html politica-de-privacidade.html termos-de-uso.html 404.html",
     "test": "playwright test",
     "check": "npm run lint:html && npm test",
     "og": "node tools/gerar-og.js"
