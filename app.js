@@ -27,7 +27,16 @@
   document.getElementById('openVideo').addEventListener('click', openVideo);
   modal.querySelector('.close').addEventListener('click', closeVideo);
   modal.addEventListener('click', e => { if (e.target === modal) closeVideo(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeVideo(); });
+  document.addEventListener('keydown', e => {
+    if (modal.hidden) return;
+    if (e.key === 'Escape') { closeVideo(); return; }
+    if (e.key !== 'Tab') return;
+    // Mantém o foco dentro do vídeo aberto (botão fechar <-> player)
+    const focaveis = [modal.querySelector('.close'), video];
+    const i = focaveis.indexOf(document.activeElement);
+    e.preventDefault();
+    focaveis[(i + (e.shiftKey ? -1 : 1) + focaveis.length) % focaveis.length].focus();
+  });
 
   // Sem aviso de cookies: o site não usa cookies, armazenamento no navegador nem serviços de terceiros.
 })();
