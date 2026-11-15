@@ -7,7 +7,7 @@ body{width:1200px;height:630px;overflow:hidden;background:#0131cd}
   background-image:linear-gradient(rgba(255,255,255,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.18) 1px,transparent 1px);background-size:56px 56px}
 .tag{position:absolute;left:56px;top:46px;font:600 18px/1 "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#b9fc01}
 .giant{position:absolute;right:-6px;top:58px;font:400 210px/.8 Anton,sans-serif;color:#b9fc01;text-transform:uppercase;white-space:nowrap}
-.me{position:absolute;right:120px;bottom:-40px;height:560px;filter:drop-shadow(0 20px 34px rgba(0,10,60,.35))}
+.me{position:absolute;right:150px;bottom:-60px;height:620px;filter:drop-shadow(0 20px 34px rgba(0,10,60,.35))}
 .txt{position:absolute;left:56px;bottom:120px}
 .hi{display:inline-block;font:700 46px/1 Caveat,cursive;transform:rotate(-4deg)}
 .name{font:400 150px/.86 Anton,sans-serif;text-transform:uppercase}
