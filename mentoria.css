@@ -1,0 +1,122 @@
+/* Hub do Juan · seção da mentoria (oferta premium) */
+#mentoria.mt{padding:0}
+.mt h2 em{font-style:normal;color:var(--blue)}
+.mt .blue h2 em{color:var(--lime)}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.hero-ctas .btn{margin-top:0}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;height:50px;padding:0 20px;border:1.5px solid rgba(255,255,255,.55);color:var(--white);font:700 15px Inter,sans-serif;border-radius:4px;transition:border-color .2s,color .2s}
+.btn-ghost:hover{border-color:var(--lime);color:var(--lime)}
+.mt-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.mt-actions .btn{margin-top:0}
+.mt-actions.center{justify-content:center}
+
+/* 1. abertura */
+.mt-hero{padding:110px 0 96px;position:relative;overflow:hidden}
+.mt-hero::after{content:"MENTORIA";position:absolute;right:-2vw;bottom:-4vw;font:400 22vw/.8 var(--display);color:rgba(255,255,255,.05);pointer-events:none;white-space:nowrap}
+.mt-title{font-size:clamp(48px,8vw,112px);max-width:14ch}
+.mt-lead{font-size:clamp(17px,1.6vw,20px);color:var(--onBlue);max-width:58ch;margin:26px 0 0}
+.mt-pains{list-style:none;padding:0;margin:64px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--lineBlue)}
+.mt-pains li{padding:24px 24px 0 0;color:var(--onBlue);font-size:15px}
+.mt-pains li + li{padding-left:24px;border-left:1px solid var(--lineBlue)}
+.mt-pains b{display:block;color:var(--white);font:400 24px/1.1 var(--display);text-transform:uppercase;letter-spacing:.01em;margin-bottom:8px}
+
+/* 2. comparativo */
+.mt-compare{padding:100px 0;background:var(--white)}
+.cmp{margin-top:44px;border:1px solid var(--line)}
+.cmp-row{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1fr) minmax(0,1.2fr)}
+.cmp-row > span{padding:18px 22px;border-bottom:1px solid var(--line);font-size:15.5px;color:var(--body);display:flex;align-items:center}
+.cmp-row:last-child > span{border-bottom:0}
+.cmp-row > span:first-child{font:700 15px Inter,sans-serif;color:var(--ink)}
+.cmp-row > span.hl{background:var(--blue);color:var(--white);font-weight:600;gap:12px;border-bottom-color:rgba(255,255,255,.14)}
+.cmp-row:not(.cmp-head) > span.hl::before{content:"";flex:none;width:20px;height:20px;border-radius:50%;
+  background:var(--lime) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230131cd' stroke-width='3.4'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/12px no-repeat}
+.cmp-head > span{font:600 12px "JetBrains Mono",monospace!important;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)!important}
+.cmp-head > span.hl{color:var(--lime)!important;background:var(--ink)}
+
+/* 3. entregáveis */
+.mt-deliver{padding:100px 0}
+.dl-head{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:end;margin-bottom:48px}
+.dl-head p{color:var(--onBlue);font-size:17px;margin:0}
+.dl-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.dl{background:rgba(255,255,255,.06);border:1px solid var(--lineBlue);padding:28px 26px;transition:background .25s,transform .25s}
+.dl:hover{background:rgba(255,255,255,.1);transform:translateY(-3px)}
+.dl .n{font:400 34px/1 var(--display);color:var(--lime)}
+.dl h3{font:400 28px/1.02 var(--display);text-transform:uppercase;letter-spacing:.01em;margin:18px 0 12px}
+.dl p{margin:0;color:var(--onBlue);font-size:15px}
+
+/* 4. método */
+.mt-method{padding:100px 0;background:var(--white)}
+.steps4{list-style:none;padding:0;margin:48px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.steps4 li{padding:0 24px 0 0}
+.steps4 li::before{content:"";display:block;height:4px;background:var(--line);margin-bottom:22px}
+.steps4 li:first-child::before{background:var(--blue)}
+.steps4 li:last-child::before{background:var(--lime)}
+.steps4 .n{font:400 48px/1 var(--display);color:var(--blue)}
+.steps4 b{display:block;font:400 30px/1 var(--display);text-transform:uppercase;margin:10px 0 8px;color:var(--ink)}
+.steps4 p{margin:0;color:var(--body);font-size:15px}
+
+/* 5. por que comigo */
+.mt-why{padding:100px 0;background:var(--tint)}
+.why-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.why{list-style:none;padding:0;margin:0;border-top:2px solid var(--ink)}
+.why li{padding:20px 0;border-bottom:1px solid var(--line);color:var(--body);font-size:16px}
+.why b{color:var(--blue);font-weight:700}
+
+/* 6. planos */
+.mt-plans{padding:100px 0}
+.pl-head{text-align:center;max-width:720px;margin:0 auto 56px}
+.pl-head p{color:var(--onBlue);font-size:17px;margin:20px auto 0;max-width:52ch}
+.mt-plans .plans{max-width:960px;margin:0 auto 32px;align-items:stretch}
+.pl-for{margin:8px 0 0;color:var(--body);font-size:15px}
+.plan.pro{outline:3px solid var(--lime)}
+.plan.pro .feat li b{color:var(--blue)}
+.guarantee{max-width:960px;margin:0 auto;display:flex;gap:16px;align-items:flex-start;padding:22px 24px;border:1px solid var(--lineBlue)}
+.guarantee svg{flex:none;width:34px;height:34px;stroke:var(--lime);fill:none;stroke-width:1.8}
+.guarantee p{margin:0;color:var(--onBlue);font-size:15px}
+.guarantee b{color:var(--white)}
+
+/* 7. para quem é */
+.mt-fit{padding:96px 0;background:var(--white)}
+.fit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.fit{padding:34px 32px;border:1px solid var(--line)}
+.fit.yes{border-top:6px solid var(--blue)}
+.fit.no{border-top:6px solid var(--ink);background:var(--tint)}
+.fit ul{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:14px}
+.fit li{display:grid;grid-template-columns:22px 1fr;gap:12px;color:var(--ink)}
+.fit.yes li::before{content:"\2713";font-weight:700;color:var(--blue)}
+.fit.no li::before{content:"\2715";font-weight:700;color:var(--mute)}
+
+/* 8. perguntas */
+.mt-faq{padding:100px 0;background:var(--white);border-top:1px solid var(--line)}
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+.wa-inline{display:inline-block;margin-top:24px;font:700 15px Inter,sans-serif;color:var(--blue);border-bottom:2px solid var(--lime);padding-bottom:2px}
+.faq{border-top:2px solid var(--ink)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 40px 22px 0;font:700 17px Inter,sans-serif;color:var(--ink);position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-50%);font:300 28px/1 Inter,sans-serif;color:var(--blue);transition:transform .2s}
+.faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq details p{margin:0 0 22px;color:var(--body)}
+
+/* 9. chamada final */
+.mt-final{padding:110px 0;text-align:center}
+.mt-final h2{font-size:clamp(46px,7vw,96px)}
+
+@media (max-width:1100px){
+  .dl-head,.why-grid,.faq-grid{grid-template-columns:1fr;gap:20px}
+  .dl-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps4{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:36px}
+}
+@media (max-width:700px){
+  .mt-hero,.mt-compare,.mt-deliver,.mt-method,.mt-why,.mt-plans,.mt-fit,.mt-faq,.mt-final{padding:68px 0}
+  .mt-pains{grid-template-columns:1fr;margin-top:44px}
+  .mt-pains li,.mt-pains li + li{padding:20px 0;border-left:0;border-bottom:1px solid var(--lineBlue)}
+  .cmp-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .cmp-row > span:first-child{grid-column:1/-1;padding-bottom:6px;border-bottom:0;background:var(--tint)}
+  .cmp-row > span{padding:12px 14px;font-size:14px}
+  .cmp-head > span:first-child{display:none}
+  .dl-grid,.steps4,.fit-grid{grid-template-columns:1fr}
+  .mt-actions .btn,.mt-actions .btn-ghost,.hero-ctas .btn,.hero-ctas .btn-ghost{flex:1 1 100%;justify-content:center}
+  .guarantee{flex-direction:column}
+  .fit{padding:26px 22px}
+}
