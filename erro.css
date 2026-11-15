@@ -1,0 +1,26 @@
+/* Página de erro (404) — mesma identidade do site */
+.erro{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;overflow:hidden;
+  background:radial-gradient(60% 70% at 50% 40%,#0a3ce0 0%,var(--blue) 45%,var(--blueD) 100%)}
+.erro::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;
+  background-image:linear-gradient(var(--lineBlue) 1px,transparent 1px),linear-gradient(90deg,var(--lineBlue) 1px,transparent 1px);
+  background-size:64px 64px;-webkit-mask-image:radial-gradient(70% 60% at 50% 45%,#000,transparent);mask-image:radial-gradient(70% 60% at 50% 45%,#000,transparent)}
+.erro-bar{position:relative;z-index:2;display:flex;align-items:center;height:76px}
+.erro-main{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;padding-top:24px;padding-bottom:56px}
+.erro-code{position:absolute;right:0;top:50%;transform:translateY(-50%);margin:0;z-index:-1;
+  font:400 clamp(160px,26vw,380px)/.8 var(--display);color:transparent;-webkit-text-stroke:3px var(--lime);opacity:.85;pointer-events:none}
+.erro-main h1{font:400 clamp(44px,7vw,92px)/.94 var(--display);text-transform:uppercase;margin:16px 0 0;max-width:14ch}
+.erro-main h1 em{font-style:normal;color:var(--lime)}
+.erro-txt{color:var(--onBlue);font-size:18px;max-width:46ch;margin:22px 0 0}
+.erro-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.erro-links .btn{margin-top:0}
+.erro-help{margin:26px 0 0;color:var(--onBlue);font-size:15px}
+.erro-help a,.erro-foot a{color:var(--white);text-decoration:underline;text-underline-offset:3px}
+.erro-help a:hover,.erro-foot a:hover{color:var(--lime)}
+.erro-foot{position:relative;z-index:2;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;padding-top:22px;padding-bottom:26px;border-top:1px solid var(--lineBlue);font-size:14px;color:var(--onBlue)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;height:50px;padding:0 20px;border:1.5px solid rgba(255,255,255,.55);color:var(--white);font:700 15px Inter,sans-serif;border-radius:4px;transition:border-color .2s,color .2s}
+.btn-ghost:hover{border-color:var(--lime);color:var(--lime)}
+@media (max-width:700px){
+  .erro-code{top:auto;bottom:16%;transform:none;right:-2vw;font-size:50vw;-webkit-text-stroke:2px var(--lime);opacity:.35}
+  .erro-links .btn,.erro-links .btn-ghost{flex:1 1 100%;justify-content:center}
+  .erro-txt{font-size:16px}
+}

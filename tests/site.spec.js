@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const AxeBuilder = require('@axe-core/playwright').default;
 
-const PAGINAS = ['/index.html', '/politica-de-privacidade.html', '/termos-de-uso.html'];
+const PAGINAS = ['/index.html', '/politica-de-privacidade.html', '/termos-de-uso.html', '/404.html'];
 
 for (const pagina of PAGINAS) {
   test.describe(pagina, () => {
@@ -197,4 +197,14 @@ test('imagem de compartilhamento existe e tem 1200×630', async ({ page }) => {
   expect(url).toMatch(/\/img\/og\.jpg$/);
   const dim = await page.evaluate(() => new Promise(r => { const i = new Image(); i.onload = () => r([i.naturalWidth, i.naturalHeight]); i.onerror = () => r(null); i.src = 'img/og.jpg'; }));
   expect(dim).toEqual([1200, 630]);
+});
+
+test('página 404 funciona em qualquer endereço (caminhos absolutos) e leva de volta ao site', async ({ page }) => {
+  await page.goto('/404.html');
+  const hrefs = await page.$$eval('link[rel="stylesheet"], link[rel="icon"]', ls => ls.map(l => l.getAttribute('href')));
+  expect(hrefs.every(h => h.startsWith('/'))).toBe(true);
+  await expect(page.locator('h1')).toContainText('não leva a lugar nenhum');
+  const inicio = page.getByRole('link', { name: 'Voltar para o início' });
+  await expect(inicio).toHaveAttribute('href', '/');
+  expect(await page.getAttribute('meta[name="robots"]', 'content')).toBe('noindex');
 });
