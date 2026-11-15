@@ -190,3 +190,11 @@ test('com "reduzir movimento" ativo, nada é animado nem escondido', async ({ pa
   }));
   expect(r).toEqual({ rv: 0, anim: 'none', numeros: ['04', '24,99'] });
 });
+
+test('imagem de compartilhamento existe e tem 1200×630', async ({ page }) => {
+  await page.goto('/index.html');
+  const url = await page.getAttribute('meta[property="og:image"]', 'content');
+  expect(url).toMatch(/\/img\/og\.jpg$/);
+  const dim = await page.evaluate(() => new Promise(r => { const i = new Image(); i.onload = () => r([i.naturalWidth, i.naturalHeight]); i.onerror = () => r(null); i.src = 'img/og.jpg'; }));
+  expect(dim).toEqual([1200, 630]);
+});
