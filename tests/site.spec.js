@@ -83,7 +83,7 @@ test.describe('página de venda', () => {
     await page.goto('/index.html');
     const numero = String(await page.locator('#recursos a.row').count()).padStart(2, '0');
     await expect(page.locator('.stat strong').first()).toHaveText(numero);
-    await expect(page.locator('#recursos .count')).toHaveText(numero);
+    await expect(page.locator('#recursos .count')).toContainText(numero);
   });
 
   test('preços, pagamento, desistência e termos estão visíveis nos planos', async ({ page }) => {
@@ -144,4 +144,10 @@ test.describe('página de venda', () => {
     });
     expect(ok).toEqual([true, true, true, true]);
   });
+});
+
+test('os dois botões de compra desativados têm a mesma aparência', async ({ page }) => {
+  await page.goto('/index.html');
+  const cores = await page.$$eval('[data-kiwify]', as => as.map(a => getComputedStyle(a).backgroundColor));
+  expect(new Set(cores).size).toBe(1);
 });

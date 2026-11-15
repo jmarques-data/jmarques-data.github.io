@@ -22,16 +22,18 @@
 
 /* 2. comparativo */
 .mt-compare{padding:100px 0;background:var(--white)}
-.cmp{margin-top:44px;border:1px solid var(--line)}
+.cmp{margin-top:44px;border:1px solid var(--line);border-collapse:collapse;width:100%}
+.cmp,.cmp thead,.cmp tbody{display:block}
+.cmp th{text-align:left;font-weight:inherit}
 .cmp-row{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1fr) minmax(0,1.2fr)}
-.cmp-row > span{padding:18px 22px;border-bottom:1px solid var(--line);font-size:15.5px;color:var(--body);display:flex;align-items:center}
+.cmp-row > *{padding:18px 22px;border-bottom:1px solid var(--line);font-size:15.5px;color:var(--body);display:flex;align-items:center}
 .cmp-row:last-child > span{border-bottom:0}
-.cmp-row > span:first-child{font:700 15px Inter,sans-serif;color:var(--ink)}
-.cmp-row > span.hl{background:var(--blue);color:var(--white);font-weight:600;gap:12px;border-bottom-color:rgba(255,255,255,.14)}
+.cmp-row > *:first-child{font:700 15px Inter,sans-serif;color:var(--ink)}
+.cmp-row > *.hl{background:var(--blue);color:var(--white);font-weight:600;gap:12px;border-bottom-color:rgba(255,255,255,.14)}
 .cmp-row:not(.cmp-head) > span.hl::before{content:"";flex:none;width:20px;height:20px;border-radius:50%;
   background:var(--lime) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230131cd' stroke-width='3.4'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/12px no-repeat}
-.cmp-head > span{font:600 12px "JetBrains Mono",monospace!important;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)!important}
-.cmp-head > span.hl{color:var(--lime)!important;background:var(--ink)}
+.cmp-head > *{font:600 12px "JetBrains Mono",monospace!important;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)!important}
+.cmp-head > *.hl{color:var(--lime)!important;background:var(--ink)}
 
 /* 3. entregáveis */
 .mt-deliver{padding:100px 0}
@@ -67,6 +69,7 @@
 .pl-head{text-align:center;max-width:720px;margin:0 auto 56px}
 .pl-head p{color:var(--onBlue);font-size:17px;margin:20px auto 0;max-width:52ch}
 .mt-plans .plans{max-width:960px;margin:0 auto 32px;align-items:stretch}
+h3.pl{margin:0}
 .pl-for{margin:8px 0 0;color:var(--body);font-size:15px}
 .plan.pro{outline:3px solid var(--lime)}
 .plan.pro .feat li b{color:var(--blue)}
@@ -113,9 +116,9 @@
   .mt-pains{grid-template-columns:1fr;margin-top:44px}
   .mt-pains li,.mt-pains li + li{padding:20px 0;border-left:0;border-bottom:1px solid var(--lineBlue)}
   .cmp-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
-  .cmp-row > span:first-child{grid-column:1/-1;padding-bottom:6px;border-bottom:0;background:var(--tint)}
-  .cmp-row > span{padding:12px 14px;font-size:14px}
-  .cmp-head > span:first-child{display:none}
+  .cmp-row > *:first-child{grid-column:1/-1;padding-bottom:6px;border-bottom:0;background:var(--tint)}
+  .cmp-row > *{padding:12px 14px;font-size:14px}
+  .cmp-head > *:first-child{display:none}
   .dl-grid,.steps4,.fit-grid{grid-template-columns:1fr}
   .mt-actions .btn,.mt-actions .btn-ghost,.hero-ctas .btn,.hero-ctas .btn-ghost{flex:1 1 100%;justify-content:center}
   .guarantee{flex-direction:column}
