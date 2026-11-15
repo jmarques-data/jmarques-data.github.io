@@ -7,6 +7,9 @@ for (const pagina of PAGINAS) {
   test.describe(pagina, () => {
     test('não tem violações de acessibilidade WCAG 2.2 AA (axe)', async ({ page }) => {
       await page.goto(pagina);
+      // espera as animações de entrada terminarem (texto semitransparente daria falso alarme de contraste)
+      await page.evaluate(() => Promise.all(document.getAnimations().filter(a => a.effect && a.effect.getTiming().iterations !== Infinity).map(a => a.finished.catch(() => {}))));
+      await page.waitForTimeout(1000);
       const r = await new AxeBuilder({ page })
         .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
         .analyze();
@@ -164,4 +167,26 @@ test('o vídeo da mentoria tem legenda em português que carrega (WCAG 1.2.2)', 
   });
   expect(info).toMatchObject({ trilha: true, idioma: 'pt-BR', estado: 2 });
   expect(info.cues).toBeGreaterThan(3);
+});
+
+test('animações: nada fica escondido depois de rolar a página e os números terminam certos', async ({ page }) => {
+  await page.goto('/index.html', { waitUntil: 'networkidle' });
+  const altura = await page.evaluate(() => document.body.scrollHeight);
+  for (let y = 0; y <= altura; y += 500) { await page.evaluate(v => window.scrollTo(0, v), y); await page.waitForTimeout(60); }
+  await page.waitForTimeout(1200);
+  const escondidos = await page.$$eval('.rv:not(.rv-in)', els => els.length);
+  expect(escondidos).toBe(0);
+  const numeros = await page.$$eval('.stat strong', els => els.map(e => e.textContent.trim()));
+  expect(numeros).toEqual(['04', '24,99']);
+});
+
+test('com "reduzir movimento" ativo, nada é animado nem escondido', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/index.html', { waitUntil: 'networkidle' });
+  const r = await page.evaluate(() => ({
+    rv: document.querySelectorAll('.rv').length,
+    anim: getComputedStyle(document.querySelector('.giant')).animationName,
+    numeros: [...document.querySelectorAll('.stat strong')].map(e => e.textContent.trim())
+  }));
+  expect(r).toEqual({ rv: 0, anim: 'none', numeros: ['04', '24,99'] });
 });
