@@ -11,7 +11,7 @@
 
 /* ---------- entrada do topo (só no carregamento) ---------- */
 .giant{animation:jm-rise var(--dur-reveal) var(--ease-out) both}
-.visual .me{animation:jm-rise var(--dur-reveal) var(--ease-out) 120ms both}
+.visual .techcore{animation:jm-rise var(--dur-reveal) var(--ease-out) 120ms both}
 .left .hi,.left .name,.left .role{animation:jm-rise var(--dur-reveal) var(--ease-out) both}
 .left .name{animation-delay:80ms}
 .left .role{animation-delay:160ms}
@@ -47,7 +47,7 @@ a.row:hover h3{transform:translate3d(4px,0,0)}
 .stat strong.counting{font-variant-numeric:tabular-nums}
 
 @media (prefers-reduced-motion:reduce){
-  .giant,.visual .me,.left .hi,.left .name,.left .role,.faq details p{animation:none!important}
+  .giant,.visual .techcore,.tc-caret,.tc-chip,.left .hi,.left .name,.left .role,.faq details p{animation:none!important}
   .rv{opacity:1!important;transform:none!important;transition:none!important}
   .btn,.btn-ghost,.cta,.talk,.wa,.plan,.oc,.dl,.fit,a.row h3,a.row .go svg{transition:none!important;transform:none!important}
 }

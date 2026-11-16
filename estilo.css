@@ -54,8 +54,30 @@ h2{font:400 clamp(42px,6.4vw,84px)/.94 var(--display);text-transform:uppercase;l
   font:400 var(--gs)/.8 var(--display);color:var(--lime);text-transform:uppercase;letter-spacing:-.005em}
 .visual{grid-area:visual;position:relative;z-index:1;align-self:stretch;display:flex;align-items:flex-end;justify-content:center;margin-top:calc(var(--gs) * -0.78);min-height:0}
 .figure{position:relative;height:calc(100% + 28px);width:100%;display:flex;align-items:flex-start;justify-content:center;margin-bottom:-28px}
-.me{position:relative;z-index:1;display:block;height:100%;width:auto;max-width:100%;max-height:min(80vh,700px);object-fit:contain;object-position:50% 100%;
-  filter:drop-shadow(0 20px 34px rgba(0,10,60,.35))}
+/* Elemento tech no lugar da foto: terminal + chips (só HTML/CSS) */
+.techcore{position:relative;z-index:1;align-self:center;width:min(100%,440px);margin-top:clamp(0px,3vw,46px)}
+.tc-glow{position:absolute;inset:-18% -12%;z-index:-1;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(185,252,1,.38),rgba(185,252,1,0) 72%)}
+.tc-win{border-radius:14px;overflow:hidden;background:#071a66;border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 28px 60px rgba(0,8,50,.45),0 0 0 6px rgba(255,255,255,.05);transform:rotate(-2deg)}
+.tc-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;background:rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.1)}
+.tc-bar i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.3)}
+.tc-bar i:first-child{background:var(--lime)}
+.tc-bar span{margin-left:8px;font-size:11px;color:var(--onBlueMute)}
+.tc-code,.tc-bar span{text-transform:none;letter-spacing:0}
+.tc-code{padding:16px 18px 18px;font-size:clamp(11px,1.05vw,13.5px);line-height:1.75;color:var(--white)}
+.tc-code p{margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tc-code b{color:var(--lime);font-weight:700;margin-right:6px}
+.tc-code .ok{color:rgba(185,252,1,.85);padding-left:14px}
+.tc-caret{display:inline-block;width:8px;height:1.05em;margin-left:4px;vertical-align:-2px;background:var(--lime);animation:tc-blink 1s steps(1) infinite}
+@keyframes tc-blink{50%{opacity:0}}
+.tc-chip{position:absolute;z-index:2;font:700 12px Inter,sans-serif;padding:7px 12px;border-radius:999px;white-space:nowrap;
+  background:var(--white);color:var(--blue);box-shadow:0 10px 24px rgba(0,8,50,.35);animation:float 9s ease-in-out infinite}
+.tc-chip.k1{background:var(--lime);left:-6%;top:-6%}
+.tc-chip.k2{right:-4%;top:12%;animation-delay:-2s}
+.tc-chip.k3{left:-8%;top:58%;animation-delay:-4s}
+.tc-chip.k4{right:-6%;bottom:6%;animation-delay:-6s;background:var(--lime)}
+.tc-chip.k5{left:30%;bottom:-8%;animation-delay:-3s}
 
 .left{grid-area:left;position:relative;z-index:2;padding-bottom:6px}
 .hi{font:700 clamp(30px,3.4vw,44px)/1 Caveat,cursive;transform:rotate(-4deg);display:inline-block;margin-bottom:-4px}
@@ -185,8 +207,8 @@ footer a:hover{color:var(--lime)}
 @media (max-width:900px){
   .stage{--gs:min(19vw,230px);grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto auto auto;grid-template-areas:"giant giant" "visual visual" "left right";padding-top:80px;align-items:end;row-gap:0}
   .visual{align-self:start}
-  .figure{height:auto;max-width:260px;margin:0 auto}
-  .me{width:100%;height:auto}
+  .figure{height:auto;max-width:420px;margin:0 auto}
+  .techcore{width:min(100%,380px);margin-top:24px}
   .right{align-self:end}
 }
 @media (max-width:700px){
@@ -194,7 +216,9 @@ footer a:hover{color:var(--lime)}
   .talk span,.talk{font-size:13px}
   .tr{display:none}
   .stage{--gs:19.5vw;grid-template-columns:minmax(0,1fr);grid-template-areas:"giant" "visual" "left" "right";gap:0;padding-top:78px}
-  .figure{max-width:215px;margin:0 auto -6px}
+  .figure{max-width:320px;margin:0 auto 52px}
+  .techcore{margin-top:clamp(56px,17vw,80px)}
+  .tc-chip{font-size:11px;padding:6px 10px}
   .left{margin-top:-30px}
   .name{font-size:92px}
   .right{justify-items:start;text-align:left;margin-top:30px;grid-template-columns:1fr 1fr;align-items:center;gap:20px}
