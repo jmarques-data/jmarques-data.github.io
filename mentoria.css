@@ -124,3 +124,44 @@ h3.pl{margin:0}
   .guarantee{flex-direction:column}
   .fit{padding:26px 22px}
 }
+
+/* 1b. o que você vai conseguir fazer */
+.mt-result{padding:96px 0;background:var(--tint)}
+.res-grid{list-style:none;padding:0;margin:44px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.res-grid li{background:var(--white);border:1px solid var(--line);border-left:5px solid var(--lime);padding:24px 22px}
+.res-grid b{display:block;font:400 26px/1.02 var(--display);text-transform:uppercase;color:var(--ink);letter-spacing:.01em}
+.res-grid p{margin:10px 0 0;color:var(--body);font-size:15px}
+.res-note{margin:26px 0 0;font-size:14px;color:var(--mute)}
+
+/* 3b. prévia real */
+.mt-preview{padding:96px 0;background:var(--tint)}
+.pv-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px;margin-top:44px;align-items:start}
+.pv-card{margin:0;background:var(--white);border:1px solid var(--line);padding:28px 26px}
+.pv-tag{display:inline-block;background:var(--blue);color:var(--white);padding:5px 9px;border-radius:3px}
+.pv-card h3{font:400 30px/1 var(--display);text-transform:uppercase;color:var(--ink);margin:16px 0 14px}
+.pv-check{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.pv-check li{display:grid;grid-template-columns:22px 1fr;gap:10px;color:var(--ink);font-size:15px}
+.pv-check li::before{content:"";width:16px;height:16px;margin-top:3px;border:2px solid var(--blue);border-radius:3px}
+.pv-foot{margin:18px 0 0;font-size:13px;color:var(--mute)}
+.pv-proj img{display:block;width:100%;height:auto;margin-top:16px;border-radius:6px}
+.pv-proj figcaption{margin-top:14px;font-size:15px;color:var(--body)}
+.pv-proj figcaption b{color:var(--ink)}
+
+/* 6b. depois da compra */
+.mt-after{padding:96px 0;background:var(--tint)}
+.after-steps{list-style:none;padding:0;margin:44px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;counter-reset:none}
+.after-steps li{background:var(--white);border:1px solid var(--line);padding:24px 22px}
+.after-steps .n{font:400 40px/1 var(--display);color:var(--blue)}
+.after-steps b{display:block;font:400 26px/1 var(--display);text-transform:uppercase;margin:10px 0 8px;color:var(--ink)}
+.after-steps p{margin:0;color:var(--body);font-size:15px}
+.after-note{margin:26px 0 0;font-size:15px;color:var(--body)}
+.after-note b{color:var(--ink)}
+
+@media (max-width:1000px){
+  .res-grid,.after-steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pv-grid{grid-template-columns:1fr}
+}
+@media (max-width:700px){
+  .mt-result,.mt-preview,.mt-after{padding:68px 0}
+  .res-grid,.after-steps{grid-template-columns:1fr}
+}
