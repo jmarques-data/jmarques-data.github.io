@@ -93,7 +93,7 @@ h2{font:400 clamp(42px,6.4vw,84px)/.94 var(--display);text-transform:uppercase;l
 .right{grid-area:right;position:relative;z-index:2;display:grid;gap:28px;justify-items:end;text-align:right;padding-bottom:6px}
 .stat{display:grid;grid-template-columns:auto auto;gap:12px;align-items:center}
 .stat strong{font:400 clamp(40px,4.2vw,60px)/.85 var(--display);color:var(--lime)}
-.stat .mono{font-size:10px}
+.stat .mono{font-size:11px}
 .stat span{text-align:left}
 .motto{display:flex;align-items:center;gap:12px;font:600 15px/1.3 Inter,sans-serif;text-align:left}
 .motto i{flex:none;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--lime);display:grid;place-items:center}
@@ -241,3 +241,8 @@ footer a:hover{color:var(--lime)}
 }
 @media (max-width:380px){ .name{font-size:80px} .bar .talk{padding:8px 12px} }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Alvos de toque de pelo menos 24 px (WCAG 2.2, 2.5.8) sem mudar o visual */
+.bar nav a,footer nav a,.back,.doc-foot a,.erro-foot a,.erro-help a,.wa-inline{display:inline-flex;align-items:center;min-height:24px}
+.social{gap:4px}
+.social a{display:inline-grid;place-items:center;min-width:32px;min-height:32px}

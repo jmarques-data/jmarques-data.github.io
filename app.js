@@ -5,8 +5,12 @@
   let abertos = 0;
   document.querySelectorAll('a[data-kiwify]').forEach(a => {
     if (/^https:\/\//.test(a.getAttribute('href') || '')) { abertos++; return; }
-    a.removeAttribute('href'); a.removeAttribute('target'); a.removeAttribute('rel');
-    a.classList.add('disabled'); a.textContent = 'Inscrições abrem em breve';
+    // Sem link real, vira um texto (span): um <a> sem destino não é um link válido para buscadores.
+    const aviso = document.createElement('span');
+    aviso.className = a.className + ' disabled';
+    aviso.dataset.kiwify = a.dataset.kiwify;
+    aviso.textContent = 'Inscrições abrem em breve';
+    a.replaceWith(aviso);
   });
   const status = document.getElementById('status');
   if (status && abertos) status.lastChild.textContent = 'Inscrições abertas';
@@ -18,7 +22,7 @@
     const v = vertical();
     box.classList.toggle('vertical', v);
     const src = v ? 'video/mentoria-9x16.mp4' : 'video/mentoria-16x9.mp4';
-    if (video.getAttribute('src') !== src) { video.src = src; video.poster = v ? 'video/capa-9x16.jpg' : 'video/capa-16x9.jpg'; }
+    if (video.getAttribute('src') !== src) { video.src = src; video.poster = v ? 'video/capa-9x16.webp' : 'video/capa-16x9.webp'; }
     modal.hidden = false; document.body.style.overflow = 'hidden';
     video.play().catch(() => {});
     modal.querySelector('.close').focus();

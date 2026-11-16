@@ -7,7 +7,18 @@ body{width:1200px;height:630px;overflow:hidden;background:#0131cd}
   background-image:linear-gradient(rgba(255,255,255,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.18) 1px,transparent 1px);background-size:56px 56px}
 .tag{position:absolute;left:56px;top:46px;font:600 18px/1 "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#b9fc01}
 .giant{position:absolute;right:-6px;top:58px;font:400 210px/.8 Anton,sans-serif;color:#b9fc01;text-transform:uppercase;white-space:nowrap}
-.me{position:absolute;right:150px;bottom:-105px;height:640px;filter:drop-shadow(0 20px 34px rgba(0,10,60,.35))}
+.term{position:absolute;right:60px;top:230px;width:560px;border-radius:16px;overflow:hidden;background:#071a66;border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 30px 70px rgba(0,8,50,.5),0 0 0 7px rgba(255,255,255,.05);transform:rotate(-2deg)}
+.term::after{content:"";position:absolute;inset:-30%;z-index:-1;background:radial-gradient(closest-side,rgba(185,252,1,.35),transparent 70%)}
+.bar{display:flex;align-items:center;gap:8px;padding:14px 18px;background:rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.1)}
+.bar i{width:13px;height:13px;border-radius:50%;background:rgba(255,255,255,.3)}
+.bar i:first-child{background:#b9fc01}
+.bar span{margin-left:10px;font:600 15px "JetBrains Mono",monospace;color:rgba(255,255,255,.74)}
+.code{padding:22px 24px 26px;font:600 19px/1.8 "JetBrains Mono",monospace;color:#fff}
+.code p{white-space:nowrap}
+.code b{color:#b9fc01;margin-right:8px}
+.code .ok{color:rgba(185,252,1,.85);padding-left:18px}
+.caret{display:inline-block;width:11px;height:22px;margin-left:6px;vertical-align:-3px;background:#b9fc01}
 .txt{position:absolute;left:56px;bottom:120px}
 .hi{display:inline-block;font:700 46px/1 Caveat,cursive;transform:rotate(-4deg)}
 .name{font:400 150px/.86 Anton,sans-serif;text-transform:uppercase}
