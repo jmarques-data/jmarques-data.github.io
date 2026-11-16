@@ -246,3 +246,7 @@ footer a:hover{color:var(--lime)}
 .bar nav a,footer nav a,.back,.doc-foot a,.erro-foot a,.erro-help a,.wa-inline{display:inline-flex;align-items:center;min-height:24px}
 .social{gap:4px}
 .social a{display:inline-grid;place-items:center;min-width:32px;min-height:32px}
+
+/* Selo "Sem cookies" (leva à seção Cookies da política) */
+.nocookie{white-space:nowrap}
+.nocookie svg{display:inline-block;width:15px;height:15px;margin-right:5px;vertical-align:-3px;fill:currentColor}
