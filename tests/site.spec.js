@@ -177,7 +177,7 @@ test('animações: nada fica escondido depois de rolar a página e os números t
   const escondidos = await page.$$eval('.rv:not(.rv-in)', els => els.length);
   expect(escondidos).toBe(0);
   const numeros = await page.$$eval('.stat strong', els => els.map(e => e.textContent.trim()));
-  expect(numeros).toEqual(['04', '24,99']);
+  expect(numeros).toEqual(['05', '24,99']);
 });
 
 test('com "reduzir movimento" ativo, nada é animado nem escondido', async ({ page }) => {
@@ -188,7 +188,7 @@ test('com "reduzir movimento" ativo, nada é animado nem escondido', async ({ pa
     anim: getComputedStyle(document.querySelector('.giant')).animationName,
     numeros: [...document.querySelectorAll('.stat strong')].map(e => e.textContent.trim())
   }));
-  expect(r).toEqual({ rv: 0, anim: 'none', numeros: ['04', '24,99'] });
+  expect(r).toEqual({ rv: 0, anim: 'none', numeros: ['05', '24,99'] });
 });
 
 test('imagem de compartilhamento existe e tem 1200×630', async ({ page }) => {
