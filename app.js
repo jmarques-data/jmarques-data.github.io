@@ -63,6 +63,8 @@
   document.querySelectorAll(SELETORES).forEach(el => {
     // o que já está visível ao abrir não anima (evita piscar)
     if (el.getBoundingClientRect().top < alturaTela * 0.92) return;
+    // dentro de carrossel que rola para o lado (planos no celular), o card pode nunca "entrar" na tela: não anima
+    if (el.parentElement && getComputedStyle(el.parentElement).overflowX !== 'visible') return;
     const irmaos = el.parentElement ? [...el.parentElement.children].filter(c => c.matches(SELETORES)) : [];
     el.style.setProperty('--i', String(Math.min(Math.max(irmaos.indexOf(el), 0), 5)));
     el.classList.add('rv');
