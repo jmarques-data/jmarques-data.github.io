@@ -52,7 +52,7 @@
   const SELETORES = [
     '#recursos .head', '#recursos .row',
     '.mt-hero .mt-pains li', '.mt-compare h2', '.cmp',
-    '.dl-head', '.dl', '.mt-method h2', '.steps4 li', '.mt-why h2', '.why li',
+    '.dl-head', '.dl', '.mt-method h2', '.steps4 li',
     '.pl-head', '.plan', '.guarantee', '.fit', '.mt-faq h2', '.faq details', '.mt-final h2',
     '#sobre h2', '#sobre .bio', '.sk-group', '.wa'
   ].join(',');
