@@ -1,6 +1,6 @@
 # Itens de trabalho
 
-O site ainda não tem repositório no GitHub (criar e publicar depende de autorização do Juan), então os itens ficam aqui. Ao criar o repositório, cada item vira uma Issue.
+O site está publicado em https://jmarques-data.github.io (repositório `jmarques-data/jmarques-data.github.io`). Os itens ficam registrados aqui.
 
 Status: **Concluído** (feito e testado) · **Parcial** · **Pendente** · **Bloqueado** (depende do Juan ou de terceiros).
 
@@ -11,7 +11,7 @@ Segunda rodada (14/11/2026, noite): `html-validate` sem erros; Playwright com 60
 
 | ID | Item | Severidade | Status | Branch |
 |---|---|---|---|---|
-| WI-00 | Git local, validação de HTML, testes de acessibilidade e comportamento, workflow de CI | Média | Concluído (CI só roda quando houver repositório) | `chore/qualidade` |
+| WI-00 | Git local, validação de HTML, testes de acessibilidade e comportamento, workflow de CI | Média | Concluído | `chore/qualidade` |
 | WI-01 | Google Fonts enviava o IP de cada visitante ao Google (terceiro, transferência internacional). Fontes passaram a ser servidas pelo próprio site | Alta (privacidade) | Concluído | `fix/fontes-locais-privacidade` |
 | WI-02 | Sem Content-Security-Policy e Referrer-Policy. Adicionadas por `<meta>` nas 3 páginas | Média (segurança) | Concluído | `fix/fontes-locais-privacidade` |
 | WI-03 | Aviso de cookies desnecessário (o site não usa cookies) e uso de `localStorage`. Removidos | Baixa | Concluído | `fix/fontes-locais-privacidade` |
@@ -26,7 +26,7 @@ Segunda rodada (14/11/2026, noite): `html-validate` sem erros; Playwright com 60
 | WI-12 | Vídeo em modal sem foco preso; botão desativado do plano em grupo parecia clicável | Média | Concluído | `fix/acessibilidade` |
 | WI-13 | Vídeo "a mentoria por dentro" sem legenda. O vídeo não tem narração: a legenda `video/mentoria.pt-BR.vtt` descreve a trilha e todos os textos da tela | Média (WCAG 1.2.2) | Concluído | `fix/legenda-video` |
 | WI-14 | Links reais do checkout da Kiwify | — | Bloqueado: Juan precisa criar a conta e os produtos | — |
-| WI-15 | Criar repositório, ativar o CI e publicar no GitHub Pages; conferir o endereço usado em `canonical` e `og:url` | — | Bloqueado: precisa de autorização para publicar | — |
+| WI-15 | Criar repositório, ativar o CI e publicar no GitHub Pages; conferir o endereço usado em `canonical` e `og:url` | — | Concluído: publicado no GitHub Pages, CI ativo | `main` |
 | WI-16 | Imagem de compartilhamento própria (1200×630) no lugar da foto recortada: `img/og.jpg`, gerada de `tools/og.html` com `npm run og` | Baixa | Concluído | `feat/imagem-compartilhamento` |
 | WI-17 | CSP diferente entre as páginas (a outra sessão tirou `upgrade-insecure-requests` de 2 páginas e da doc). Igualada nas 3 | Baixa | Concluído | `chore/csp-consistente` |
 | WI-18 | Movimento e microinterações: entrada do topo, seções ao rolar, contagem dos números, hover e toque. Só `transform`/`opacity`, desligado com `prefers-reduced-motion` | Média (experiência) | Concluído | `feat/motion-microinteracoes` |
@@ -37,3 +37,9 @@ Segunda rodada (14/11/2026, noite): `html-validate` sem erros; Playwright com 60
 | WI-23 | Topo no celular mais limpo: sem "Online · conteúdo em português" e "Cada atalho, testado na prática" (pedido do Juan) | Baixa | Concluído | `fix/topo-celular-limpo` |
 | WI-24 | Página de erro 404 personalizada (`404.html` + `erro.css`), com caminhos absolutos para funcionar em qualquer endereço, `noindex`, links para início, recursos e mentoria. O GitHub Pages só permite personalizar a 404 | Baixa | Concluído | `feat/pagina-404` |
 | WI-25 | Termos, política e FAQ com as decisões de 15/11: mentoria de 30 dias contados da entrada no grupo, grupo no WhatsApp (aviso de número visível) e idade mínima de 16 anos (16-17 com autorização do responsável) | Alta | Concluído | `wi-25-acesso-whatsapp-idade` |
+| WI-26 | Terminal animado (`.techcore`) no lugar da foto do topo; imagem de compartilhamento regenerada sem a foto | Média (visual) | Concluído | `feat/elemento-tech` |
+| WI-27 | Auditoria de 16/11: robots.txt, sitemap.xml, canonical e Open Graph nas páginas legais, JSON-LD (WebSite + Person), capas do vídeo em WebP, CLS dos termos zerado (preload de fontes), alvos de toque de 24 px, imagens sem uso arquivadas | Média (SEO e desempenho) | Concluído: Lighthouse celular 99/100/100/100, computador 100/100/100/100 | `chore/auditoria` |
+| WI-28 | SEO 83 por "robots.txt inválido": a CSP `connect-src 'none'` impedia a leitura. Página inicial com `connect-src 'self'`; botões da Kiwify sem link viram `<span>` | Média (SEO) | Concluído: SEO 100 | `fix/seo-robots` |
+| WI-29 | Selo "Sem cookies" no rodapé de todas as páginas e seção Cookies na política (atualizada em 16/11) | Baixa | Concluído | `feat/selo-sem-cookies` |
+| WI-30 | Mentoria: "O que você vai conseguir fazer", "Uma amostra do que você recebe" (checklist real e projeto do GitHub Pro) e "Do pagamento ao primeiro passo" | Média (conversão) | Concluído | `feat/mentoria-prova` |
+| WI-31 | Verificação do Google Search Console (meta tag) e envio do sitemap | Baixa | Parcial: aguardando o Search Console ler o sitemap | `chore/search-console` |
