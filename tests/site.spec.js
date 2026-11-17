@@ -66,20 +66,21 @@ for (const pagina of PAGINAS) {
 }
 
 test.describe('página de venda', () => {
-  test('sem link real de checkout, os botões de compra ficam desativados e avisam', async ({ page }) => {
+  test('os botões de compra levam ao checkout da Kiwify em nova aba', async ({ page }) => {
     await page.goto('/index.html');
-    const ctas = await page.locator('[data-kiwify]').all();
+    const ctas = await page.locator('a[data-kiwify]').all();
     expect(ctas.length).toBe(2);
     for (const cta of ctas) {
-      await expect(cta).not.toHaveAttribute('href', /.+/);
-      await expect(cta).toHaveText('Inscrições abrem em breve');
+      await expect(cta).toHaveAttribute('href', /^https:\/\/pay\.kiwify\.com\.br\/[A-Za-z0-9]+$/);
+      await expect(cta).toHaveAttribute('target', '_blank');
+      await expect(cta).not.toHaveText('Inscrições abrem em breve');
     }
   });
 
-  test('o selo do topo não diz "mentoria aberta" enquanto as inscrições estão fechadas', async ({ page, isMobile }) => {
+  test('com os links de checkout, o selo do topo diz "Inscrições abertas"', async ({ page, isMobile }) => {
     test.skip(isMobile, 'o selo fica oculto no celular');
     await page.goto('/index.html');
-    await expect(page.locator('.tr')).not.toContainText(/aberta/i);
+    await expect(page.locator('#status')).toContainText('Inscrições abertas');
   });
 
   test('a contagem de recursos grátis bate com os recursos disponíveis', async ({ page }) => {
@@ -147,12 +148,6 @@ test.describe('página de venda', () => {
     });
     expect(ok).toEqual([true, true, true, true]);
   });
-});
-
-test('os dois botões de compra desativados têm a mesma aparência', async ({ page }) => {
-  await page.goto('/index.html');
-  const cores = await page.$$eval('[data-kiwify]', as => as.map(a => getComputedStyle(a).backgroundColor));
-  expect(new Set(cores).size).toBe(1);
 });
 
 test('o vídeo da mentoria tem legenda em português que carrega (WCAG 1.2.2)', async ({ page }) => {
