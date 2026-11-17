@@ -25,7 +25,7 @@ Segunda rodada (14/11/2026, noite): `html-validate` sem erros; Playwright com 60
 | WI-11 | Comparativo em `<div role=table>`; nomes dos planos sem título. Tabela nativa e `<h3>` | Baixa | Concluído | `fix/acessibilidade` |
 | WI-12 | Vídeo em modal sem foco preso; botão desativado do plano em grupo parecia clicável | Média | Concluído | `fix/acessibilidade` |
 | WI-13 | Vídeo "a mentoria por dentro" sem legenda. O vídeo não tem narração: a legenda `video/mentoria.pt-BR.vtt` descreve a trilha e todos os textos da tela | Média (WCAG 1.2.2) | Concluído | `fix/legenda-video` |
-| WI-14 | Links reais do checkout da Kiwify (grupo `jeiEOtx`, individual `IAvXrBt`), à vista, Pix e cartão | Alta | Parcial: links no site; falta o Juan completar o cadastro na Kiwify e configurar a entrega | `feat/links-kiwify` |
+| WI-14 | Links reais do checkout da Kiwify: grupo `jeiEOtx` (R$ 24,99), grupo + revisão `VTmFgZ9` (R$ 49,90) e individual `IAvXrBt` (R$ 59,90), à vista, Pix e cartão | Alta | Concluído: publicado em 17/11; plano do meio em `feat/plano-revisao` | `feat/links-kiwify` |
 | WI-15 | Criar repositório, ativar o CI e publicar no GitHub Pages; conferir o endereço usado em `canonical` e `og:url` | — | Concluído: publicado no GitHub Pages, CI ativo | `main` |
 | WI-16 | Imagem de compartilhamento própria (1200×630) no lugar da foto recortada: `img/og.jpg`, gerada de `tools/og.html` com `npm run og` | Baixa | Concluído | `feat/imagem-compartilhamento` |
 | WI-17 | CSP diferente entre as páginas (a outra sessão tirou `upgrade-insecure-requests` de 2 páginas e da doc). Igualada nas 3 | Baixa | Concluído | `chore/csp-consistente` |
