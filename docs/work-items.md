@@ -43,3 +43,4 @@ Segunda rodada (14/11/2026, noite): `html-validate` sem erros; Playwright com 60
 | WI-29 | Selo "Sem cookies" no rodapé de todas as páginas e seção Cookies na política (atualizada em 16/11) | Baixa | Concluído | `feat/selo-sem-cookies` |
 | WI-30 | Mentoria: "O que você vai conseguir fazer", "Uma amostra do que você recebe" (checklist real e projeto do GitHub Pro) e "Do pagamento ao primeiro passo" | Média (conversão) | Concluído | `feat/mentoria-prova` |
 | WI-31 | Verificação do Google Search Console (meta tag) e envio do sitemap | Baixa | Parcial: aguardando o Search Console ler o sitemap | `chore/search-console` |
+| WI-32 | Celular mais enxuto: `recursos.html` e `mentoria.html` dedicadas, recursos principais e atalho para os detalhes na home, planos em carrossel, cards compactos (home de ~21 para ~10 telas) | Alta (conversão no celular) | Concluído | `feat/site-celular` |
