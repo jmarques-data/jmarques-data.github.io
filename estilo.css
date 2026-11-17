@@ -134,6 +134,8 @@ a.row:hover .go{background:var(--lime);border-color:var(--lime)}
 .go{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;color:var(--blue);transition:.2s}
 .go svg{width:16px;height:16px}
 .row.soon h3,.row.soon .num{color:var(--mute)}
+.ver-todos{display:inline-flex;gap:8px;margin-top:24px;font:700 15px Inter,sans-serif;color:var(--blue);border-bottom:2px solid var(--lime);padding-bottom:2px}
+.ver-todos:hover{color:var(--ink)}
 
 /* ================= MENTORIA ================= */
 .m-head{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:end;margin-bottom:48px}
@@ -238,6 +240,13 @@ footer a:hover{color:var(--lime)}
   .step{border-right:0;border-bottom:1px solid var(--lineBlue)}
   .step:last-child{border-bottom:0}
   .wa{width:100%}
+  /* celular mais enxuto: menos respiro, títulos menores e só os recursos principais na home */
+  section{padding:52px 0}
+  h2{font-size:38px}
+  .head{margin-bottom:22px}
+  #recursos .row.extra{display:none}
+  .row{padding:16px 2px}
+  .row p{font-size:14px}
 }
 @media (max-width:380px){ .name{font-size:80px} .bar .talk{padding:8px 12px} }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const AxeBuilder = require('@axe-core/playwright').default;
 
-const PAGINAS = ['/index.html', '/politica-de-privacidade.html', '/termos-de-uso.html', '/404.html'];
+const PAGINAS = ['/index.html', '/recursos.html', '/mentoria.html', '/politica-de-privacidade.html', '/termos-de-uso.html', '/404.html'];
 
 for (const pagina of PAGINAS) {
   test.describe(pagina, () => {

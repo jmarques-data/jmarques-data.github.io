@@ -170,3 +170,55 @@ h3.pl{margin:0}
   .mt-result,.mt-preview,.mt-after{padding:68px 0}
   .res-grid,.after-steps{grid-template-columns:1fr}
 }
+
+/* 3a. atalho para a página de detalhes (só aparece no celular) */
+.mt-more{display:none}
+.pl-swipe{display:none}
+.more-list{list-style:none;padding:0;margin:24px 0;display:grid;gap:12px}
+.more-list li{display:grid;grid-template-columns:22px 1fr;gap:10px;color:var(--ink);font-weight:600}
+.more-list li::before{content:"\2713";font-weight:700;color:var(--blue)}
+
+/* ===== celular: home enxuta, detalhes em mentoria.html ===== */
+@media (max-width:700px){
+  #mentoria .mt-compare,#mentoria .mt-preview,#mentoria .mt-method,#mentoria .mt-after,#mentoria .mt-fit{display:none}
+  #mentoria .mt-hero .btn-ghost[href="#comparativo"]{display:none}
+  .mt-more{display:block;padding:52px 0;background:var(--tint)}
+  .mt-more .btn{width:100%;justify-content:center;margin-top:0}
+
+  .mt-hero,.mt-result,.mt-compare,.mt-deliver,.mt-preview,.mt-method,.mt-plans,.mt-after,.mt-fit,.mt-faq,.mt-final{padding:52px 0}
+  .mt-hero::after{display:none}
+  .mt-lead{margin-top:18px}
+  .mt-actions{margin-top:22px}
+  .mt-pains{margin-top:30px}
+  .mt-pains li,.mt-pains li + li{padding:14px 0;font-size:14px}
+  .mt-pains b{font-size:20px;margin-bottom:4px}
+
+  /* resultados: 2 colunas, só os títulos */
+  .res-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:24px}
+  .res-grid li{padding:14px 12px;border-left-width:4px}
+  .res-grid b{font-size:18px}
+  .res-grid p{display:none}
+  .res-note{margin-top:16px;font-size:13px}
+
+  /* o que você recebe: cards compactos */
+  .dl-head{margin-bottom:22px;gap:12px}
+  .dl-head p{font-size:15px}
+  .dl-grid{gap:10px}
+  .dl{padding:18px 16px}
+  .dl .n{font-size:24px}
+  .dl h3{font-size:22px;margin:8px 0 6px}
+  .dl p{font-size:14px}
+
+  /* planos: um por vez, deslizando para o lado */
+  .pl-head{margin-bottom:8px}
+  .pl-head p{font-size:15px;margin-top:14px}
+  .pl-swipe{display:block;color:var(--lime);margin-top:16px}
+  .mt-plans .plans{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;max-width:none;margin:0 -16px 20px;padding:20px 16px 22px;scrollbar-width:none}
+  .mt-plans .plans::-webkit-scrollbar{display:none}
+  .mt-plans .plan{flex:0 0 84%;scroll-snap-align:center;padding:26px 20px 22px}
+  .mt-plans .plan.pro{margin-right:0;box-shadow:6px 6px 0 var(--lime)}
+  .guarantee{padding:16px}
+
+  .faq summary{padding:16px 36px 16px 0;font-size:16px}
+  .mt-final h2{font-size:42px}
+}
