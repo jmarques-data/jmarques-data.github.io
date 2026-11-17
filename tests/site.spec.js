@@ -69,7 +69,7 @@ test.describe('página de venda', () => {
   test('os botões de compra levam ao checkout da Kiwify em nova aba', async ({ page }) => {
     await page.goto('/index.html');
     const ctas = await page.locator('a[data-kiwify]').all();
-    expect(ctas.length).toBe(2);
+    expect(ctas.length).toBe(3);
     for (const cta of ctas) {
       await expect(cta).toHaveAttribute('href', /^https:\/\/pay\.kiwify\.com\.br\/[A-Za-z0-9]+$/);
       await expect(cta).toHaveAttribute('target', '_blank');
