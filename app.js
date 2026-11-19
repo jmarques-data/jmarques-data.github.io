@@ -15,34 +15,92 @@
   const status = document.getElementById('status');
   if (status && abertos) status.lastChild.textContent = 'Inscrições abertas';
 
-  // Vídeo "a mentoria por dentro": 16:9 no computador e 9:16 no celular
-  const modal = document.getElementById('videoModal'), box = modal.querySelector('.modal-box'), video = document.getElementById('mvideo');
-  const vertical = () => window.matchMedia('(max-width: 700px), (orientation: portrait)').matches;
-  function openVideo() {
-    const v = vertical();
-    box.classList.toggle('vertical', v);
-    const src = v ? 'video/mentoria-9x16.mp4' : 'video/mentoria-16x9.mp4';
-    if (video.getAttribute('src') !== src) { video.src = src; video.poster = v ? 'video/capa-9x16.webp' : 'video/capa-16x9.webp'; }
-    modal.hidden = false; document.body.style.overflow = 'hidden';
-    video.play().catch(() => {});
-    modal.querySelector('.close').focus();
+  // Botão "Tentar de novo" na página offline.html
+  const tentarNovamente = document.getElementById('tentarNovamente');
+  if (tentarNovamente) {
+    tentarNovamente.addEventListener('click', e => {
+      e.preventDefault();
+      location.reload();
+    });
   }
-  function closeVideo() { video.pause(); modal.hidden = true; document.body.style.overflow = ''; document.getElementById('openVideo').focus(); }
-  document.getElementById('openVideo').addEventListener('click', openVideo);
-  modal.querySelector('.close').addEventListener('click', closeVideo);
-  modal.addEventListener('click', e => { if (e.target === modal) closeVideo(); });
-  document.addEventListener('keydown', e => {
-    if (modal.hidden) return;
-    if (e.key === 'Escape') { closeVideo(); return; }
-    if (e.key !== 'Tab') return;
-    // Mantém o foco dentro do vídeo aberto (botão fechar <-> player)
-    const focaveis = [modal.querySelector('.close'), video];
-    const i = focaveis.indexOf(document.activeElement);
-    e.preventDefault();
-    focaveis[(i + (e.shiftKey ? -1 : 1) + focaveis.length) % focaveis.length].focus();
-  });
 
-  // Sem aviso de cookies: o site não usa cookies, armazenamento no navegador nem serviços de terceiros.
+  // Vídeo "a mentoria por dentro": 16:9 no computador e 9:16 no celular
+  const modal = document.getElementById('videoModal');
+  const botaoVideo = document.getElementById('openVideo');
+  if (modal && botaoVideo) {
+    const box = modal.querySelector('.modal-box'), video = document.getElementById('mvideo');
+    const vertical = () => window.matchMedia('(max-width: 700px), (orientation: portrait)').matches;
+    function openVideo() {
+      const v = vertical();
+      box.classList.toggle('vertical', v);
+      const src = v ? 'video/mentoria-9x16.mp4' : 'video/mentoria-16x9.mp4';
+      if (video.getAttribute('src') !== src) { video.src = src; video.poster = v ? 'video/capa-9x16.webp' : 'video/capa-16x9.webp'; }
+      modal.hidden = false; document.body.style.overflow = 'hidden';
+      video.play().catch(() => {});
+      modal.querySelector('.close').focus();
+    }
+    function closeVideo() { video.pause(); modal.hidden = true; document.body.style.overflow = ''; botaoVideo.focus(); }
+    botaoVideo.addEventListener('click', openVideo);
+    modal.querySelector('.close').addEventListener('click', closeVideo);
+    modal.addEventListener('click', e => { if (e.target === modal) closeVideo(); });
+    document.addEventListener('keydown', e => {
+      if (modal.hidden) return;
+      if (e.key === 'Escape') { closeVideo(); return; }
+      if (e.key !== 'Tab') return;
+      // Mantém o foco dentro do vídeo aberto (botão fechar <-> player)
+      const focaveis = [modal.querySelector('.close'), video];
+      const i = focaveis.indexOf(document.activeElement);
+      e.preventDefault();
+      focaveis[(i + (e.shiftKey ? -1 : 1) + focaveis.length) % focaveis.length].focus();
+    });
+  }
+
+  // Service Worker: registra depois do evento load, com try/catch silencioso
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      try {
+        navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(() => {});
+      } catch {}
+    });
+  }
+
+  // Dica discreta de instalação no iPhone (só no Safari do iOS quando não estiver em modo app)
+  const ua = navigator.userAgent || '';
+  const ehIOS = /iPhone|iPod|iPad/i.test(ua);
+  const ehSafari = /Safari/i.test(ua) && !/CriOS|FxiOS|EdgiOS|OPiOS|mercury/i.test(ua);
+  const emModoApp = navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
+  if (ehIOS && ehSafari && !emModoApp) {
+    const CHAVE_DICA = 'pwa_ios_fechado_em';
+    const TRINTA_DIAS_MS = 30 * 24 * 60 * 60 * 1000;
+    let ocultoPor30Dias = false;
+    try {
+      const fechadoEm = Number(localStorage.getItem(CHAVE_DICA) || 0);
+      if (fechadoEm > 0 && (Date.now() - fechadoEm) < TRINTA_DIAS_MS) ocultoPor30Dias = true;
+    } catch {}
+
+    if (!ocultoPor30Dias) {
+      const dica = document.createElement('div');
+      dica.className = 'ios-pwa-tip';
+      dica.id = 'iosPwaTip';
+      dica.setAttribute('role', 'status');
+
+      const txt = document.createElement('p');
+      txt.textContent = 'Instale no iPhone: toque em Compartilhar e depois em Adicionar à Tela de Início';
+
+      const fechar = document.createElement('button');
+      fechar.type = 'button';
+      fechar.className = 'ios-pwa-close';
+      fechar.setAttribute('aria-label', 'Fechar dica de instalação no iPhone');
+      fechar.textContent = 'Fechar';
+      fechar.addEventListener('click', () => {
+        try { localStorage.setItem(CHAVE_DICA, String(Date.now())); } catch {}
+        dica.remove();
+      });
+
+      dica.append(txt, fechar);
+      document.body.appendChild(dica);
+    }
+  }
 
   // Movimento: seções entram ao rolar e os números do topo contam até o valor.
   // Desligado para quem pede menos movimento ou em navegadores sem IntersectionObserver.
