@@ -1,6 +1,6 @@
 /* Páginas de texto (política de privacidade e termos de uso) */
-.top-band{height:10px;background:var(--blue)}
-.doc{max-width:760px;padding:56px 16px 80px;margin:0 auto}
+.top-band{height:calc(10px + env(safe-area-inset-top));background:var(--blue)}
+.doc{max-width:760px;padding:56px max(16px,env(safe-area-inset-right)) calc(80px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));margin:0 auto}
 .doc h1{font:400 clamp(44px,8vw,72px)/.95 var(--display);text-transform:uppercase;margin:14px 0 8px;color:var(--ink)}
 .doc h2{font:700 20px/1.3 Inter,sans-serif;text-transform:none;margin:36px 0 8px;color:var(--blue)}
 .doc p,.doc li{color:var(--body)}

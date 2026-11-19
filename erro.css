@@ -1,5 +1,5 @@
 /* Página de erro (404) — mesma identidade do site */
-.erro{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;overflow:hidden;
+.erro{position:relative;min-height:100vh;min-height:100svh;padding-top:env(safe-area-inset-top);display:flex;flex-direction:column;overflow:hidden;
   background:radial-gradient(60% 70% at 50% 40%,#0a3ce0 0%,var(--blue) 45%,var(--blueD) 100%)}
 .erro::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;
   background-image:linear-gradient(var(--lineBlue) 1px,transparent 1px),linear-gradient(90deg,var(--lineBlue) 1px,transparent 1px);
@@ -16,7 +16,7 @@
 .erro-help{margin:26px 0 0;color:var(--onBlue);font-size:15px}
 .erro-help a,.erro-foot a{color:var(--white);text-decoration:underline;text-underline-offset:3px}
 .erro-help a:hover,.erro-foot a:hover{color:var(--lime)}
-.erro-foot{position:relative;z-index:2;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;padding-top:22px;padding-bottom:26px;border-top:1px solid var(--lineBlue);font-size:14px;color:var(--onBlue)}
+.erro-foot{position:relative;z-index:2;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;padding-top:22px;padding-bottom:calc(26px + env(safe-area-inset-bottom));border-top:1px solid var(--lineBlue);font-size:14px;color:var(--onBlue)}
 .btn-ghost{display:inline-flex;align-items:center;gap:8px;height:50px;padding:0 20px;border:1.5px solid rgba(255,255,255,.55);color:var(--white);font:700 15px Inter,sans-serif;border-radius:4px;transition:border-color .2s,color .2s}
 .btn-ghost:hover{border-color:var(--lime);color:var(--lime)}
 @media (max-width:700px){

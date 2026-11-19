@@ -4,10 +4,11 @@
   "description": "Página de venda e link da bio do Juan Marques (site estático).",
   "scripts": {
     "serve": "python tools/servidor.py 4173",
-    "lint:html": "html-validate index.html recursos.html mentoria.html politica-de-privacidade.html termos-de-uso.html 404.html",
+    "lint:html": "html-validate index.html recursos.html mentoria.html politica-de-privacidade.html termos-de-uso.html 404.html offline.html",
     "test": "playwright test",
     "check": "npm run lint:html && npm test",
-    "og": "node tools/gerar-og.js"
+    "og": "node tools/gerar-og.js",
+    "icones": "node tools/gerar-icones.js"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.14.0",

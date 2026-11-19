@@ -5,7 +5,7 @@ Instruções para agentes de IA (Claude Code e outros) que trabalham neste site.
 ## O que é
 Site estático em HTML, CSS e JavaScript puro, sem framework e sem build. Página única (`index.html`) com recursos grátis e a oferta da mentoria (grupo R$ 24,99 e individual R$ 59,90, pagamento único pela Kiwify), mais `politica-de-privacidade.html` e `termos-de-uso.html`.
 
-Hospedagem prevista: GitHub Pages em `https://jmarques-data.github.io/`. **Ainda não publicado.**
+Publicado no GitHub Pages em `https://jmarques-data.github.io/` (repositório `jmarques-data/jmarques-data.github.io`).
 
 ## Comandos
 | Comando | O que faz |
@@ -29,7 +29,7 @@ No Windows os testes usam o Chrome instalado. No CI (`CI=true`) usam o Chromium 
 - Não inventar dados da empresa (CPF/CNPJ, endereço), prazos ou garantias. Pendências jurídicas ficam em `docs/legal-review.md`.
 
 ## Fluxo de trabalho
-- Git local (sem remoto ainda). Uma branch por item (`fix/…`, `chore/…`), commits citando o item (`Refs WI-07`), merge na `main` com `--no-ff`.
-- Itens de trabalho em `docs/work-items.md` enquanto não houver repositório no GitHub.
+- Repositório Git com remoto `origin` em `jmarques-data/jmarques-data.github.io`. Uma branch por item (`fix/…`, `chore/…`, `feat/…`), commits citando o item (`Refs WI-07`), merge na `main` com `--no-ff`.
+- Itens de trabalho em `docs/work-items.md`.
 - Rodar `npm run check` antes de juntar qualquer branch.
 - Publicar no GitHub Pages **só com autorização explícita do Juan**.

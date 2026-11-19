@@ -1,5 +1,5 @@
 /* Páginas dedicadas: recursos.html e mentoria.html */
-.pg-top{padding-bottom:72px;background:radial-gradient(60% 90% at 70% 30%,#0a3ce0 0%,var(--blue) 50%,var(--blueD) 100%)}
+.pg-top{padding-top:env(safe-area-inset-top);padding-bottom:72px;background:radial-gradient(60% 90% at 70% 30%,#0a3ce0 0%,var(--blue) 50%,var(--blueD) 100%)}
 .pg-hero{padding-top:36px}
 .pg-back{display:inline-block;margin-bottom:22px;font:600 14px Inter,sans-serif;color:var(--onBlue)}
 .pg-back:hover{color:var(--lime)}
