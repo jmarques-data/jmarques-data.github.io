@@ -9,7 +9,7 @@ Este documento reúne o inventário de dados, os serviços de terceiros e o proc
 | Nome, e-mail, dados de pagamento | checkout Kiwify | venda, comprovante, liberação de acesso | execução de contrato (art. 7º, V); obrigação legal para registros fiscais (art. 7º, II) | Kiwify | definida pela Kiwify e pela lei fiscal |
 | Nome, telefone, mensagens | grupo e suporte da mentoria, WhatsApp | prestar a mentoria e responder contatos | execução de contrato e procedimentos preliminares (art. 7º, V) | aplicativo do grupo (a definir) e WhatsApp | enquanto durar a mentoria, depois só o que a lei exigir |
 
-O site em si **não coleta nem armazena** dados: não tem formulário, cookies, `localStorage`, analytics ou pixels (há teste automatizado para storage e para requisições a terceiros).
+O site em si **não coleta** dados pessoais: não tem formulário, cookies, analytics ou pixels (há teste automatizado para storage no carregamento e para requisições a terceiros). No Safari do iOS, se a pessoa fechar a dica de instalação na Tela de Início, o site guarda no próprio aparelho (`localStorage`, chave `pwa_ios_fechado_em`) apenas a data em que o aviso foi fechado, para não mostrá-lo de novo por 30 dias. Essa preferência não é cookie, não coleta dado pessoal e nunca sai do aparelho.
 
 ## Serviços de terceiros
 | Serviço | Uso | Dados | País |

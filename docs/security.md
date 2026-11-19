@@ -11,6 +11,7 @@ Site estático: sem servidor próprio, banco de dados, login, formulários, uplo
 | Nenhum recurso de terceiros carregado no navegador | fontes locais em `fontes/` | teste automatizado |
 | Links externos com `rel="noopener"` | todos os `target="_blank"` | teste automatizado |
 | Checkout só aceita link `https://` | `app.js` | teste automatizado |
+| Service Worker (`sw.js`): só mesma origem, sem cache de terceiros | `sw.js` e `app.js` | testes automatizados de registro, escopo e modo offline |
 | Dependências de desenvolvimento sem vulnerabilidades conhecidas | `npm audit` | 0 vulnerabilidades em 14/11/2026 (o `html-validate` 9 tinha 3 moderadas e foi atualizado para o 11) |
 | CI com `permissions: contents: read` | `.github/workflows/qualidade.yml` | preparado, não executado (sem repositório) |
 

@@ -44,3 +44,14 @@ Segunda rodada (14/11/2026, noite): `html-validate` sem erros; Playwright com 60
 | WI-30 | Mentoria: "O que você vai conseguir fazer", "Uma amostra do que você recebe" (checklist real e projeto do GitHub Pro) e "Do pagamento ao primeiro passo" | Média (conversão) | Concluído | `feat/mentoria-prova` |
 | WI-31 | Verificação do Google Search Console (meta tag) e envio do sitemap | Baixa | Parcial: aguardando o Search Console ler o sitemap | `chore/search-console` |
 | WI-32 | Celular mais enxuto: `recursos.html` e `mentoria.html` dedicadas, recursos principais e atalho para os detalhes na home, planos em carrossel, cards compactos (home de ~21 para ~10 telas) | Alta (conversão no celular) | Concluído | `feat/site-celular` |
+| WI-33 | PWA iOS: ícones PNG sem transparência, `manifest.webmanifest`, meta tags Apple/PWA e `viewport-fit=cover`, área segura (`safe-area-inset`), service worker (`sw.js`) com `offline.html` e dica discreta no Safari do iOS | Média (experiência mobile) | Concluído | `feat/pwa-ios` |
+
+## Checklist WI-33 — PWA iOS
+- [x] Corrigido `AGENTS.md` (site publicado em `https://jmarques-data.github.io/` e remoto `origin` em `jmarques-data/jmarques-data.github.io`).
+- [x] Criado gerador `tools/gerar-icones.js` (`npm run icones`) e gerados `img/icones/apple-touch-icon.png` (180×180, opaco e sem cantos arredondados), `icone-192.png`, `icone-512.png` e `icone-maskable-512.png` (zona segura de 80%).
+- [x] Criado `manifest.webmanifest` na raiz com `name`, `short_name` ("Juan Marques", 12 caracteres), `start_url` (`/?origem=app`), `scope` (`/`), `display` (`standalone`), cores `#0131cd` e os 4 ícones (`any` e `maskable`).
+- [x] Adicionadas meta tags de PWA/iOS, `viewport-fit=cover` e diretivas `manifest-src 'self'; worker-src 'self'` na CSP de todas as páginas HTML (`index.html`, `recursos.html`, `mentoria.html`, `politica-de-privacidade.html`, `termos-de-uso.html`, `404.html` e `offline.html`).
+- [x] Ajustada a área segura do iPhone (`env(safe-area-inset-top/right/bottom/left)`) no topo, containers, rodapés, modal e aviso fixo (`estilo.css`, `paginas.css`, `doc.css`, `erro.css`).
+- [x] Criados `sw.js` (rede primeiro para HTML com reserva no cache e fallback para `offline.html`; cache primeiro com atualização em segundo plano para CSS, JS, fontes e imagens; só mesma origem, sem vídeos pesados) e `offline.html`.
+- [x] Adicionada dica discreta de instalação no Safari do iOS (fora do modo standalone), com botão "Fechar" guardado por 30 dias em `localStorage` (registrado em `docs/privacy.md`).
+- [x] Adicionados testes automatizados no Playwright cobrindo manifesto, meta tags em todas as páginas, dimensões/opacidade dos ícones, registro do Service Worker e navegação offline.
