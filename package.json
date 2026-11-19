@@ -7,7 +7,8 @@
     "lint:html": "html-validate index.html recursos.html mentoria.html politica-de-privacidade.html termos-de-uso.html 404.html",
     "test": "playwright test",
     "check": "npm run lint:html && npm test",
-    "og": "node tools/gerar-og.js"
+    "og": "node tools/gerar-og.js",
+    "icones": "node tools/gerar-icones.js"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.14.0",

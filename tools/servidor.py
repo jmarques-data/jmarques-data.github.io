@@ -21,6 +21,7 @@ class Servidor(http.server.ThreadingHTTPServer):
 def main() -> None:
     porta = int(sys.argv[1]) if len(sys.argv) > 1 else 4173
     raiz = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    http.server.SimpleHTTPRequestHandler.extensions_map[".webmanifest"] = "application/manifest+json"
     handler = functools.partial(http.server.SimpleHTTPRequestHandler, directory=raiz)
     with Servidor(("127.0.0.1", porta), handler) as srv:
         print(f"Servindo {raiz} em http://127.0.0.1:{porta}", flush=True)
