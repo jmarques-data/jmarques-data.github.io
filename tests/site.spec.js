@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const AxeBuilder = require('@axe-core/playwright').default;
 
-const PAGINAS = ['/index.html', '/recursos.html', '/mentoria.html', '/politica-de-privacidade.html', '/termos-de-uso.html', '/404.html'];
+const PAGINAS = ['/index.html', '/recursos.html', '/mentoria.html', '/politica-de-privacidade.html', '/termos-de-uso.html', '/404.html', '/offline.html'];
 
 for (const pagina of PAGINAS) {
   test.describe(pagina, () => {
@@ -61,6 +61,17 @@ for (const pagina of PAGINAS) {
       await page.goto(pagina);
       const semRel = await page.$$eval('a[target="_blank"]', as => as.filter(a => !/noopener/.test(a.rel)).map(a => a.href));
       expect(semRel).toEqual([]);
+    });
+
+    test('tem meta tags e links de PWA para iOS no head', async ({ page }) => {
+      await page.goto(pagina);
+      await expect(page.locator('link[rel="manifest"]')).toHaveAttribute('href', '/manifest.webmanifest');
+      await expect(page.locator('link[rel="apple-touch-icon"]')).toHaveAttribute('href', '/img/icones/apple-touch-icon.png');
+      await expect(page.locator('meta[name="apple-mobile-web-app-capable"]')).toHaveAttribute('content', 'yes');
+      await expect(page.locator('meta[name="mobile-web-app-capable"]')).toHaveAttribute('content', 'yes');
+      await expect(page.locator('meta[name="apple-mobile-web-app-title"]')).toHaveAttribute('content', 'Juan Marques');
+      await expect(page.locator('meta[name="apple-mobile-web-app-status-bar-style"]')).toHaveAttribute('content', 'black-translucent');
+      await expect(page.locator('meta[name="viewport"]')).toHaveAttribute('content', /viewport-fit=cover/);
     });
   });
 }
@@ -202,4 +213,148 @@ test('página 404 funciona em qualquer endereço (caminhos absolutos) e leva de 
   const inicio = page.getByRole('link', { name: 'Voltar para o início' });
   await expect(inicio).toHaveAttribute('href', '/');
   expect(await page.getAttribute('meta[name="robots"]', 'content')).toBe('noindex');
+});
+
+test.describe('PWA e iOS', () => {
+  test('/manifest.webmanifest responde 200, é JSON válido e tem campos e ícones obrigatórios', async ({ request }) => {
+    const res = await request.get('/manifest.webmanifest');
+    expect(res.status()).toBe(200);
+    const m = await res.json();
+    expect(m.name).toBe('Juan Marques · TI, IA e Dados');
+    expect(m.short_name).toBe('Juan Marques');
+    expect(m.short_name.length).toBeLessThanOrEqual(12);
+    expect(m.start_url).toBe('/?origem=app');
+    expect(m.scope).toBe('/');
+    expect(m.display).toBe('standalone');
+    expect(m.theme_color.toLowerCase()).toBe('#0131cd');
+    expect(m.background_color.toLowerCase()).toBe('#0131cd');
+    expect(m.lang).toBe('pt-BR');
+    expect(m.dir).toBe('ltr');
+    expect(Array.isArray(m.icons)).toBe(true);
+    const tamanhos = m.icons.map(i => i.sizes);
+    expect(tamanhos).toEqual(expect.arrayContaining(['180x180', '192x192', '512x512']));
+    expect(m.icons.some(i => i.sizes === '192x192' && i.purpose === 'any')).toBe(true);
+    expect(m.icons.some(i => i.sizes === '512x512' && i.purpose === 'any')).toBe(true);
+    expect(m.icons.some(i => i.sizes === '512x512' && i.purpose === 'maskable')).toBe(true);
+  });
+
+  test('os ícones existem, têm as dimensões certas e o apple-touch-icon não tem transparência', async ({ page, request }) => {
+    const esperados = [
+      { src: '/img/icones/apple-touch-icon.png', w: 180, h: 180 },
+      { src: '/img/icones/icone-192.png', w: 192, h: 192 },
+      { src: '/img/icones/icone-512.png', w: 512, h: 512 },
+      { src: '/img/icones/icone-maskable-512.png', w: 512, h: 512 },
+    ];
+    for (const item of esperados) {
+      const res = await request.get(item.src);
+      expect(res.status(), item.src).toBe(200);
+    }
+    await page.goto('/index.html');
+    const resultados = await page.evaluate(async (lista) => {
+      const saida = [];
+      for (const item of lista) {
+        const info = await new Promise(resolve => {
+          const img = new Image();
+          img.onload = () => {
+            const c = document.createElement('canvas');
+            c.width = img.naturalWidth;
+            c.height = img.naturalHeight;
+            const ctx = c.getContext('2d');
+            ctx.drawImage(img, 0, 0);
+            const cantos = [
+              [0, 0],
+              [c.width - 1, 0],
+              [0, c.height - 1],
+              [c.width - 1, c.height - 1],
+            ].map(([x, y]) => Array.from(ctx.getImageData(x, y, 1, 1).data));
+            resolve({ w: img.naturalWidth, h: img.naturalHeight, cantos });
+          };
+          img.onerror = () => resolve(null);
+          img.src = item.src;
+        });
+        saida.push(info);
+      }
+      return saida;
+    }, esperados);
+
+    for (let i = 0; i < esperados.length; i++) {
+      expect(resultados[i]).not.toBeNull();
+      expect(resultados[i].w, esperados[i].src).toBe(esperados[i].w);
+      expect(resultados[i].h, esperados[i].src).toBe(esperados[i].h);
+      // Todos os cantos devem ser 100% opacos (alpha 255) e na cor azul #0131cd (1, 49, 205)
+      for (const pixel of resultados[i].cantos) {
+        expect(pixel[3], `opacidade do canto em ${esperados[i].src}`).toBe(255);
+        expect(pixel.slice(0, 3), `cor do canto em ${esperados[i].src}`).toEqual([1, 49, 205]);
+      }
+    }
+  });
+
+  test('o service worker registra e ativa sem erro no console', async ({ page }) => {
+    const erros = [];
+    page.on('console', m => { if (m.type() === 'error') erros.push(m.text()); });
+    page.on('pageerror', e => erros.push(String(e)));
+
+    await page.goto('/index.html', { waitUntil: 'networkidle' });
+    const sw = await page.evaluate(async () => {
+      const reg = await navigator.serviceWorker.ready;
+      return {
+        estado: reg.active ? reg.active.state : null,
+        escopo: reg.scope,
+      };
+    });
+    expect(sw.estado).toBe('activated');
+    expect(sw.escopo).toMatch(/\/$/);
+    expect(erros).toEqual([]);
+  });
+
+  test('offline: depois de carregar uma vez, a home abre do cache e página não visitada mostra offline.html', async ({ page, context }) => {
+    await page.goto('/index.html', { waitUntil: 'networkidle' });
+    await page.evaluate(async () => {
+      await navigator.serviceWorker.ready;
+      if (!navigator.serviceWorker.controller) {
+        await new Promise(resolve => {
+          navigator.serviceWorker.addEventListener('controllerchange', resolve, { once: true });
+        });
+      }
+    });
+
+    await context.setOffline(true);
+    try {
+      await page.goto('/index.html', { waitUntil: 'domcontentloaded' });
+      await expect(page.locator('h1.name')).toContainText('Juan');
+
+      await page.goto('/pagina-nao-visitada.html', { waitUntil: 'domcontentloaded' });
+      await expect(page.locator('h1')).toContainText(/Você está\s*sem internet/i);
+      await expect(page.locator('#tentarNovamente')).toHaveText('Tentar de novo');
+    } finally {
+      await context.setOffline(false);
+    }
+  });
+
+  test('dica de instalação no Safari do iOS: aparece fora do modo app, é acessível (axe) e não volta por 30 dias ao fechar', async ({ browser }) => {
+    const ctx = await browser.newContext({
+      userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1',
+      viewport: { width: 393, height: 852 },
+    });
+    const page = await ctx.newPage();
+    await page.goto('/index.html', { waitUntil: 'networkidle' });
+
+    const dica = page.locator('#iosPwaTip');
+    await expect(dica).toBeVisible();
+    await expect(dica).toHaveAttribute('role', 'status');
+    await expect(dica).toContainText('Instale no iPhone: toque em Compartilhar e depois em Adicionar à Tela de Início');
+
+    const r = await new AxeBuilder({ page }).include('#iosPwaTip').withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']).analyze();
+    expect(r.violations).toEqual([]);
+
+    await dica.getByRole('button', { name: /fechar/i }).click();
+    await expect(dica).toHaveCount(0);
+
+    const salvo = await page.evaluate(() => Number(localStorage.getItem('pwa_ios_fechado_em') || 0));
+    expect(salvo).toBeGreaterThan(0);
+
+    await page.reload({ waitUntil: 'networkidle' });
+    await expect(page.locator('#iosPwaTip')).toHaveCount(0);
+    await ctx.close();
+  });
 });
